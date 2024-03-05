@@ -20,6 +20,8 @@ before_script:
   # install PRZ CA chain
   - cp /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt /usr/local/share/ca-certificates/
   - update-ca-certificates
+  - mkdir /root/.docker
+  - touch /root/.docker/ca.pem
   #- ps aux
   #- docker-machine regenerate-certs default
   - earthly --verbose sat ls
