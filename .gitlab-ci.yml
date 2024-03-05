@@ -20,6 +20,6 @@ earthly:
     - earthly
   stage: build
   script:
-    - cp /home/gitlab-runner/.gitlab-runner/certs/gitlab.cloud.prz.crt /usr/local/share/ca-certificates/
+    - cp /home/gitlab-runner/.gitlab-runner/certs/ca.crt /usr/local/share/ca-certificates/
     - update-ca-certificates
     - earthly --ci --push -P +images
