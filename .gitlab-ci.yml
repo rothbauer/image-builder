@@ -12,6 +12,8 @@ variables:
 image: earthly/earthly:v0.8.4
 
 before_script:
+  - cp /home/gitlab-runner/.gitlab-runner/certs/ca.crt /usr/local/share/ca-certificates/
+  - update-ca-certificates
   - earthly bootstrap
   - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
 
@@ -20,6 +22,4 @@ earthly:
     - earthly
   stage: build
   script:
-    - cp /home/gitlab-runner/.gitlab-runner/certs/ca.crt /usr/local/share/ca-certificates/
-    - update-ca-certificates
     - earthly --ci --push -P +images
