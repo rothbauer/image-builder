@@ -5,23 +5,26 @@ services:
   #- docker:stable
 
 variables:
-  DOCKER_HOST: "tcp://docker:2375"
-  DOCKER_TLS_VERIFY: 0
+  DOCKER_HOST: "tcp://docker:2376"
+  DOCKER_TLS_VERIFY: 1
   FORCE_COLOR: 1
   EARTHLY_EXEC_CMD: "/bin/sh"
   # service docker:dind container settings:
-  #DOCKER_TLS_CERTDIR: "/certs"
-  #DOCKER_TLS_PATH: "/certs/client"
-  DOCKER_TLS_CERTDIR: ""
+  DOCKER_TLS_CERTDIR: "/certs"
+  DOCKER_TLS_PATH: "/certs/client"
+  #DOCKER_TLS_CERTDIR: ""
 
 image: earthly/earthly:v0.8.4
 
 before_script:
   # install PRZ CA chain
-  - cp /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt /usr/local/share/ca-certificates/
+  #- cp /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt /usr/local/share/ca-certificates/
+  - cp /certs/client/ca.crt /usr/local/share/ca-certificates/
   - update-ca-certificates
+  # copy PRZ CA certificate to docker's config directory; TODO: instead change the path to /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt for CA in earthly's docker command? 
   - mkdir /root/.docker
-  - cp /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt /root/.docker/ca.pem
+  - cp /certs/client/ca.crt /root/.docker/ca.pem
+  #- cp /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt /root/.docker/ca.pem
   #- ps aux
   #- docker-machine regenerate-certs default
   - earthly --verbose sat ls
