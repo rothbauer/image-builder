@@ -10,13 +10,14 @@ variables:
   EARTHLY_EXEC_CMD: "/bin/sh"
   #DOCKER_TLS_CERTDIR: "/certs"
   #DOCKER_TLS_PATH: "/certs/client"
-  DOCKER_TLS_CERTDIR: ""
+  #DOCKER_TLS_CERTDIR: ""
 
 image: earthly/earthly:v0.8.4
 
 before_script:
   - cp /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt /usr/local/share/ca-certificates/
   - update-ca-certificates
+  - docker-machine regenerate-certs default
   - earthly --verbose sat ls
   - earthly --verbose bootstrap
   #- until docker info; do sleep 1; done
