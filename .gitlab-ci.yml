@@ -1,24 +1,26 @@
 ---
 
 services:
-  #- docker:dind
-  - docker:stable
+  - docker:dind
+  #- docker:stable
 
 variables:
   DOCKER_HOST: "tcp://docker:2376"
-  DOCKER_TLS_VERIFY: 1
+  DOCKER_TLS_VERIFY: 0
   FORCE_COLOR: 1
   EARTHLY_EXEC_CMD: "/bin/sh"
+  # service docker:dind container settings:
   #DOCKER_TLS_CERTDIR: "/certs"
   #DOCKER_TLS_PATH: "/certs/client"
-  #DOCKER_TLS_CERTDIR: ""
+  DOCKER_TLS_CERTDIR: ""
 
 image: earthly/earthly:v0.8.4
 
 before_script:
+  # install PRZ CA chain
   - cp /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt /usr/local/share/ca-certificates/
   - update-ca-certificates
-  - ps aux
+  #- ps aux
   #- docker-machine regenerate-certs default
   - earthly --verbose sat ls
   - earthly --verbose bootstrap
