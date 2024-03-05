@@ -5,6 +5,7 @@ services:
 
 variables:
   DOCKER_HOST: "tcp://docker:2376"
+  DOCKER_TLS_VERIFY: 1
   FORCE_COLOR: 1
   EARTHLY_EXEC_CMD: "/bin/sh"
 
