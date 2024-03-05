@@ -4,8 +4,8 @@ services:
   - docker:dind
 
 variables:
-  DOCKER_HOST: "tcp://docker:2376"
-  DOCKER_TLS_VERIFY: 1
+  DOCKER_HOST: "tcp://docker:2375"
+  DOCKER_TLS_VERIFY: 0
   FORCE_COLOR: 1
   EARTHLY_EXEC_CMD: "/bin/sh"
   DOCKER_TLS_CERTDIR: "/certs"
@@ -14,11 +14,8 @@ variables:
 image: earthly/earthly:v0.8.4
 
 before_script:
-  - mkdir /root/.docker
-  - cp /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt /root/.docker/ca.pem
   - cp /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt /usr/local/share/ca-certificates/
   - update-ca-certificates
-  - find / -name "ca.pem"
   - earthly --verbose bootstrap
   #- until docker info; do sleep 1; done
   - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
