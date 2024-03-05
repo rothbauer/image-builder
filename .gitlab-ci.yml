@@ -14,6 +14,8 @@ variables:
 image: earthly/earthly:v0.8.4
 
 before_script:
+  - mkdir /root/.docker
+  - cp /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt /root/.docker/ca.pem
   - cp /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt /usr/local/share/ca-certificates/
   - update-ca-certificates
   - earthly --verbose bootstrap
