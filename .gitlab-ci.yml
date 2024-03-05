@@ -1,7 +1,8 @@
 ---
 
 services:
-  - docker:dind
+  #- docker:dind
+  - docker:stable
 
 variables:
   DOCKER_HOST: "tcp://docker:2376"
