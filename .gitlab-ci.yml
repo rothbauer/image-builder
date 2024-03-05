@@ -18,13 +18,13 @@ image: earthly/earthly:v0.8.4
 
 before_script:
   # install PRZ CA chain
-  #- cp /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt /usr/local/share/ca-certificates/
-  - cp /certs/client/ca.crt /usr/local/share/ca-certificates/
+  - cp /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt /usr/local/share/ca-certificates/
+  #- cp /etc/ssl/certs/prz_ca_bundle.crt /usr/local/share/ca-certificates/
   - update-ca-certificates
   # copy PRZ CA certificate to docker's config directory; TODO: instead change the path to /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt for CA in earthly's docker command? 
   - mkdir /root/.docker
-  - cp /certs/client/ca.crt /root/.docker/ca.pem
-  #- cp /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt /root/.docker/ca.pem
+  #- cp /etc/ssl/certs/prz_ca_bundle.crt /root/.docker/ca.pem
+  - cp /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt /root/.docker/ca.pem
   #- ps aux
   #- docker-machine regenerate-certs default
   - earthly --verbose sat ls
