@@ -15,13 +15,11 @@ before_script:
   - earthly bootstrap --verbose
   - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
 
-script:
-  - cp /home/gitlab-runner/.gitlab-runner/certs/gitlab.cloud.prz.crt /usr/local/share/ca-certificates/
-  - update-ca-certificates
-
 earthly:
   tags:
     - earthly
   stage: build
   script:
+    - cp /home/gitlab-runner/.gitlab-runner/certs/gitlab.cloud.prz.crt /usr/local/share/ca-certificates/
+    - update-ca-certificates
     - earthly --ci --push -P +images
