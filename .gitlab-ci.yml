@@ -21,7 +21,7 @@ before_script:
   - cp /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt /usr/local/share/ca-certificates/
   - update-ca-certificates
   - mkdir /root/.docker
-  - cp /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt /root/.docker/
+  - cp /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt /root/.docker/ca.pem
   #- ps aux
   #- docker-machine regenerate-certs default
   - earthly --verbose sat ls
