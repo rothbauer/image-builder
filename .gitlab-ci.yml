@@ -17,7 +17,7 @@ image: earthly/earthly:v0.8.4
 before_script:
   - cp /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt /usr/local/share/ca-certificates/
   - update-ca-certificates
-  - earthly sat ls
+  - earthly --verbose sat ls
   - earthly --verbose bootstrap
   #- until docker info; do sleep 1; done
   - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
