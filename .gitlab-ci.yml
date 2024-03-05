@@ -4,7 +4,7 @@ services:
   - docker:dind
 
 variables:
-  DOCKER_HOST: tcp://docker:2375
+  #DOCKER_HOST: tcp://docker:2375
   FORCE_COLOR: 1
   EARTHLY_EXEC_CMD: "/bin/sh"
   #DOCKER_TLS_CERTDIR: "/certs"
@@ -12,6 +12,7 @@ variables:
 image: earthly/earthly:v0.8.4
 
 before_script:
+  - ps aux
   - ls -lah /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain
   - cp /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt /usr/local/share/ca-certificates/
   - update-ca-certificates
