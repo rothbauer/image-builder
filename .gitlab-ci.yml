@@ -28,7 +28,6 @@ before_script:
   #- cp /etc/ssl/certs/prz_ca_bundle.crt /root/.docker/ca.pem
   #- cp /etc/ssl/certs/ca-certificates.crt /root/.docker/ca.pem
   - cp /certs/server/ca.pem /root/.docker/ca.pem
-  - openssl verify -CAfile /certs/server/ca.pem /certs/server/cert.pem
   #- cp /certs/server/ca.pem /usr/local/share/ca-certificates/prz-ca.crt
   #- update-ca-certificates
   ##- cp /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt /root/.docker/ca.pem
