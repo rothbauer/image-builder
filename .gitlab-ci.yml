@@ -14,6 +14,7 @@ variables:
   DOCKER_TLS_PATH: "/certs/client"
   #DOCKER_TLS_CERTDIR: ""
   DOCKER_DRIVER: overlay2
+  FF_RESOLVE_FULL_TLS_CHAIN: true
 
 image: earthly/earthly:v0.8.4
 
