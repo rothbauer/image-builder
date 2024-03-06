@@ -13,6 +13,7 @@ variables:
   ##DOCKER_TLS_CERTDIR: "/certs"
   ##DOCKER_TLS_PATH: "/certs/client"
   DOCKER_TLS_CERTDIR: ""
+  DOCKER_DRIVER: overlay2
 
 image: earthly/earthly:v0.8.4
 
