@@ -29,7 +29,7 @@ before_script:
   ##- cp /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt /root/.docker/ca.pem
   #- ps aux
   #- docker-machine regenerate-certs default
-  - openssl x509 -in /certs/server/cert.pem -noout -text
+  - cat /certs/server/cert.pem
   - earthly --verbose sat ls
   - earthly --verbose bootstrap
   #- until docker info; do sleep 1; done
