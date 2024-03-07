@@ -28,9 +28,8 @@ before_script:
   ###- update-ca-certificates
   # copy PRZ CA certificate to docker's config directory; TODO: instead change the path to /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt for CA in earthly's docker command? 
   - mkdir /root/.docker
-  #- cp /etc/ssl/certs/prz_ca_bundle.crt /root/.docker/ca.pem
-  #- cp /etc/ssl/certs/ca-certificates.crt /root/.docker/ca.pem
-  - cp /certs/server/ca.pem /root/.docker/ca.pem
+  - cp /etc/ssl/certs/ca-certificates.crt /root/.docker/ca.pem
+  ##- cp /certs/server/ca.pem /root/.docker/ca.pem
   #- cp /certs/server/ca.pem /usr/local/share/ca-certificates/prz-ca.crt
   #- update-ca-certificates
   ##- cp /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt /root/.docker/ca.pem
@@ -39,7 +38,7 @@ before_script:
 #- ls /certs/server/
   # wait for docker (needed mainly if running dind container in )
   #- until docker info >/dev/null; do sleep 1; done
-  - earthly --verbose sat ls
+  #- earthly --verbose sat ls
   - earthly --verbose bootstrap
   #- until docker info; do sleep 1; done
   - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
