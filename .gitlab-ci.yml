@@ -1,7 +1,7 @@
 ---
 
 services:
-  - docker:rc-dind-rootless
+  - docker:24.0.6-dind
   #- docker:stable
 
 variables:
