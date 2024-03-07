@@ -20,7 +20,7 @@ build:
   COPY (+build.plugin/src --PLUGIN=magnum-ui) /magnum-ui
   COPY (+build.plugin/src --PLUGIN=manila-ui) /manila-ui
   COPY (+build.plugin/src --PLUGIN=neutron-vpnaas-dashboard) /neutron-vpnaas-dashboard
-  COPY (+build.plugin/src --PLUGIN=octavia-dashboard) /octavia-dashboard
+  #COPY (+build.plugin/src --PLUGIN=octavia-dashboard) /octavia-dashboard
   COPY (+build.plugin/src --PLUGIN=senlin-dashboard) /senlin-dashboard
   DO ../openstack-service+BUILD_VENV \
     --PROJECT=${PROJECT} \
