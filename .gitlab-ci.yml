@@ -37,7 +37,7 @@ before_script:
   #- docker-machine regenerate-certs default
 #- ls /certs/server/
   # wait for docker (needed mainly if running dind container in )
-  #- until docker info >/dev/null; do sleep 1; done
+  - until docker info >/dev/null; do sleep 1; done
   #- earthly --verbose sat ls
   - earthly --verbose bootstrap
   #- until docker info; do sleep 1; done
