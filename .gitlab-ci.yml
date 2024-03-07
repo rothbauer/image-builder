@@ -1,8 +1,8 @@
 ---
 
 services:
-  #- core.harbor.cloud.prz/infra/docker:dind
-  - docker:dind
+  - core.harbor.cloud.prz/infra/docker:dind
+  #- docker:dind
   #- docker:stable
 
 variables:
