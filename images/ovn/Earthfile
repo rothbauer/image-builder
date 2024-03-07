@@ -43,4 +43,4 @@ host:
 
 images:
   BUILD +central
-  BUILD --platform linux/amd64 --platform linux/arm64 +host
+  BUILD --platform linux/amd64 +host

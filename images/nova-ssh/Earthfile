@@ -15,4 +15,4 @@ platform-image:
   SAVE IMAGE --push ${REGISTRY}/nova-ssh:latest
 
 image:
-  BUILD --platform linux/amd64 --platform linux/arm64 +platform-image
+  BUILD --platform linux/amd64 +platform-image

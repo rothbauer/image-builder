@@ -18,4 +18,4 @@ platform-image:
   SAVE IMAGE --push ${REGISTRY}/libvirtd:${RELEASE}
 
 image:
-  BUILD --platform linux/amd64 --platform linux/arm64 +platform-image
+  BUILD --platform linux/amd64 +platform-image

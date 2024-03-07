@@ -14,4 +14,4 @@ platform-image:
     ${REGISTRY}/openvswitch:${VERSION}
 
 image:
-  BUILD --platform linux/amd64 --platform linux/arm64 +platform-image
+  BUILD --platform linux/amd64 +platform-image
