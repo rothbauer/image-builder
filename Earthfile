@@ -1,5 +1,20 @@
 VERSION --use-copy-link --try 0.8
 
+build.collection:
+  FROM registry.gitlab.com/pipeline-components/ansible-lint:latest
+  COPY . /src
+  RUN ansible-galaxy collection build /src
+  SAVE ARTIFACT /code/*.tar.gz AS LOCAL dist/
+
+go.build:
+  FROM golang:1.21
+  WORKDIR /src
+  ARG GOOS=linux
+  ARG GOARCH=amd64
+  ARG VARIANT
+  COPY --dir go.mod go.sum ./
+  RUN go mod download
+
 libvirt-tls-sidecar.build:
   FROM +go.build
   ARG GOOS=linux
