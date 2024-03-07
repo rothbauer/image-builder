@@ -20,8 +20,8 @@ libvirt-tls-sidecar.build:
   ARG GOOS=linux
   ARG GOARCH=amd64
   ARG VARIANT
-  COPY --dir cmd internal ./
-  RUN GOARM=${VARIANT#"v"} go build -o main cmd/libvirt-tls-sidecar/main.go
+  #COPY --dir cmd internal ./
+  #RUN GOARM=${VARIANT#"v"} go build -o main cmd/libvirt-tls-sidecar/main.go
   SAVE ARTIFACT ./main
 
 libvirt-tls-sidecar.platform-image:
@@ -37,7 +37,7 @@ libvirt-tls-sidecar.platform-image:
   SAVE IMAGE --push ${REGISTRY}/libvirt-tls-sidecar:latest
 
 libvirt-tls-sidecar.image:
-    BUILD --platform=linux/amd64 --platform=linux/arm64 +libvirt-tls-sidecar.platform-image
+    BUILD --platform=linux/amd64 +libvirt-tls-sidecar.platform-image
 
 build.wheels:
   FROM ./images/builder+image
