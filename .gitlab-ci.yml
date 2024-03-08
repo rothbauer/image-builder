@@ -5,9 +5,9 @@ services:
   - docker:dind
 
 variables:
-  #DOCKER_HOST: "tcp://localhost:2376"
   DOCKER_HOST: "tcp://docker:2376" # for default docker image for docker hub
   # DOCKER_HOST: "tcp://core.harbor.cloud.prz-infra-docker:2376" # use this for our custom image from harbor
+  # DOCKER_HOST: "tcp://localhost:2376"
   DOCKER_TLS_VERIFY: 1
   FORCE_COLOR: 1
   EARTHLY_EXEC_CMD: "/bin/sh"
@@ -21,26 +21,12 @@ variables:
 image: earthly/earthly:v0.8.4
 
 before_script:
-  # install PRZ CA chain
-  ###- cp /etc/ssl/certs/prz_ca_bundle.crt /usr/local/share/ca-certificates/
-  ##- cp /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt /usr/local/share/ca-certificates/
-  #- cp /etc/ssl/certs/prz_ca_bundle.crt /usr/local/share/ca-certificates/
-  ###- update-ca-certificates
-  # copy PRZ CA certificate to docker's config directory; TODO: instead change the path to /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt for CA in earthly's docker command? 
   - mkdir /root/.docker
   - cp /certs/client/*.pem /root/.docker/
-  ##- cp /certs/server/ca.pem /root/.docker/ca.pem
-  #- cp /certs/server/ca.pem /usr/local/share/ca-certificates/prz-ca.crt
-  #- update-ca-certificates
-  ##- cp /home/gitlab-runner/.gitlab-runner/certs/prz-ca-fullchain/ca.crt /root/.docker/ca.pem
-  #- ps aux
-  #- docker-machine regenerate-certs default
-#- ls /certs/server/
-  # wait for docker (needed mainly if running dind container in )
+  # wait for dockerd on runner pod's svc-0 container 
   - until docker info >/dev/null; do sleep 1; done
   #- earthly --verbose sat ls
-  - earthly --verbose bootstrap
-  #- until docker info; do sleep 1; done
+  - earthly bootstrap
   - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
 
 earthly:
@@ -48,5 +34,4 @@ earthly:
     - earthly
   stage: build
   script:
-    - sleep 3h
-    #- earthly --ci --push -P +images
+    - earthly --ci --push -P +images
