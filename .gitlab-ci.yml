@@ -17,6 +17,7 @@ variables:
   #DOCKER_TLS_CERTDIR: ""
   DOCKER_DRIVER: overlay2
   #FF_RESOLVE_FULL_TLS_CHAIN: "true"
+  EARTHLY_PUSH: "true"
 
 image: earthly/earthly:v0.8.4
 
@@ -34,4 +35,4 @@ earthly:
     - earthly
   stage: build
   script:
-    - earthly --ci --push -P +images
+    - earthly --verbose --ci --push -P +images
