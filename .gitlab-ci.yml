@@ -18,7 +18,6 @@ variables:
   DOCKER_DRIVER: overlay2
   #FF_RESOLVE_FULL_TLS_CHAIN: "true"
   EARTHLY_PUSH: "true"
-  RELEASE: "2023.1" # openstack release to build
 
 image: earthly/earthly:v0.8.4
 
@@ -36,4 +35,4 @@ earthly:
     - earthly
   stage: build
   script:
-    - earthly --verbose --ci --push -P +images
+    - earthly --verbose --ci --push -P +images --RELEASE="2023.1"
