@@ -89,7 +89,7 @@ images:
   BUILD ./images/horizon+image --REGISTRY=${REGISTRY}
   BUILD ./images/ironic+image --REGISTRY=${REGISTRY}
   BUILD ./images/keystone+image --REGISTRY=${REGISTRY}
-  BUILD ./images/kubernetes-entrypoint+image --REGISTRY=${REGISTRY}
+  #BUILD ./images/kubernetes-entrypoint+image --REGISTRY=${REGISTRY}
   BUILD ./images/libvirtd+image --REGISTRY=${REGISTRY}
   BUILD ./images/magnum+image --REGISTRY=${REGISTRY}
   BUILD ./images/manila+image --REGISTRY=${REGISTRY}
