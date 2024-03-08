@@ -19,7 +19,7 @@ platform-image:
   DO ../+APT_INSTALL --PACKAGES="jq mstflint"
   COPY +build/offloadctl /usr/local/bin/offloadctl
   ENTRYPOINT ["/usr/local/bin/offloadctl"]
-  ARG REGISTRY=https://core.harbor.cloud.prz/openstack-helm
+  ARG REGISTRY=core.harbor.cloud.prz/openstack-helm
   SAVE IMAGE --push \
     ${REGISTRY}/${PROJECT}:${RELEASE} \
     ${REGISTRY}/${PROJECT}:${PROJECT_REF}

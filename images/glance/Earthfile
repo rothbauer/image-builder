@@ -26,7 +26,7 @@ image:
   COPY ../kubernetes+image/kubectl /usr/local/bin/kubectl
   DO ../+APT_INSTALL \
     --PACKAGES "ceph-common lsscsi nvme-cli python3-rados python3-rbd qemu-utils sysfsutils udev util-linux"
-  ARG REGISTRY=https://core.harbor.cloud.prz/openstack-helm
+  ARG REGISTRY=core.harbor.cloud.prz/openstack-helm
   SAVE IMAGE --push \
     ${REGISTRY}/${PROJECT}:${RELEASE} \
     ${REGISTRY}/${PROJECT}:${PROJECT_REF}

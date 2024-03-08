@@ -11,7 +11,7 @@ platform-image:
     chown -R nova: /etc/ssh && \
     mkdir /var/run/sshd && \
     chmod 0755 /var/run/sshd
-  ARG REGISTRY=https://core.harbor.cloud.prz/openstack-helm
+  ARG REGISTRY=core.harbor.cloud.prz/openstack-helm
   SAVE IMAGE --push ${REGISTRY}/nova-ssh:latest
 
 image:

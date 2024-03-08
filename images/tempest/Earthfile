@@ -43,7 +43,7 @@ image:
   COPY +build/venv /var/lib/openstack
   DO ../+APT_INSTALL \
     --PACKAGES "iputils-ping openssh-client"
-  ARG REGISTRY=https://core.harbor.cloud.prz/openstack-helm
+  ARG REGISTRY=core.harbor.cloud.prz/openstack-helm
   SAVE IMAGE --push \
     ${REGISTRY}/${PROJECT}:${RELEASE} \
     ${REGISTRY}/${PROJECT}:${PROJECT_REF}

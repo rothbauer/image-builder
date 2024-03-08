@@ -8,7 +8,7 @@ platform-image:
   LABEL org.opencontainers.image.source=https://github.com/vexxhost/atmosphere
   DO ../+DNF_INSTALL --PACKAGES "centos-release-nfv-openvswitch.noarch"
   DO ../+DNF_INSTALL --PACKAGES "openvswitch${SERIES}-${VERSION}.el9s iptables"
-  ARG REGISTRY=https://core.harbor.cloud.prz/openstack-helm
+  ARG REGISTRY=core.harbor.cloud.prz/openstack-helm
   SAVE IMAGE --push \
     ${REGISTRY}/openvswitch:${SERIES} \
     ${REGISTRY}/openvswitch:${VERSION}

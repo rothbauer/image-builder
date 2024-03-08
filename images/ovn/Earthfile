@@ -30,7 +30,7 @@ component-image:
   ARG TARGETARCH
   ARG TARGETVARIANT
   COPY (+ovn-kubernetes/ovn-kube-util --GOARCH=$TARGETARCH --VARIANT=$TARGETVARIANT) /usr/bin
-  ARG REGISTRY=https://core.harbor.cloud.prz/openstack-helm
+  ARG REGISTRY=core.harbor.cloud.prz/openstack-helm
   SAVE IMAGE --push \
     ${REGISTRY}/ovn-${NAME}:${SERIES} \
     ${REGISTRY}/ovn-${NAME}:${VERSION}

@@ -33,7 +33,7 @@ libvirt-tls-sidecar.platform-image:
     --platform=linux/amd64 \
     (+libvirt-tls-sidecar.build/main --GOARCH=$TARGETARCH --VARIANT=$TARGETVARIANT) /usr/bin/libvirt-tls-sidecar
   ENTRYPOINT ["/usr/bin/libvirt-tls-sidecar"]
-  ARG REGISTRY=https://core.harbor.cloud.prz/openstack-helm
+  ARG REGISTRY=core.harbor.cloud.prz/openstack-helm
   SAVE IMAGE --push ${REGISTRY}/libvirt-tls-sidecar:latest
 
 libvirt-tls-sidecar.image:
@@ -74,11 +74,11 @@ image:
   ENV PATH=/venv/bin:$PATH
   COPY +build.collections/ /usr/share/ansible
   ARG tag=latest
-  ARG REGISTRY=https://core.harbor.cloud.prz/openstack-helm
+  ARG REGISTRY=core.harbor.cloud.prz/openstack-helm
   SAVE IMAGE --push ${REGISTRY}:${tag}
 
 images:
-  ARG REGISTRY=https://core.harbor.cloud.prz/openstack-helm
+  ARG REGISTRY=core.harbor.cloud.prz/openstack-helm
   BUILD +libvirt-tls-sidecar.image --REGISTRY=${REGISTRY}
   BUILD ./images/barbican+image --REGISTRY=${REGISTRY}
   BUILD ./images/cinder+image --REGISTRY=${REGISTRY}

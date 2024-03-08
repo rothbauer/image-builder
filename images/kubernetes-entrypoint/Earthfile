@@ -26,7 +26,7 @@ platform-image:
     (+build/main --GOARCH=$TARGETARCH) /kubernetes-entrypoint
   USER 65534
   ENTRYPOINT ["/kubernetes-entrypoint"]
-  ARG REGISTRY=https://core.harbor.cloud.prz/openstack-helm
+  ARG REGISTRY=core.harbor.cloud.prz/openstack-helm
   SAVE IMAGE --push \
     ${REGISTRY}/kubernetes-entrypoint:${COMMIT} \
     ${REGISTRY}/kubernetes-entrypoint:latest

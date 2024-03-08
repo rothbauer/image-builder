@@ -16,7 +16,7 @@ image:
   COPY +build/venv /var/lib/openstack
   DO ../+APT_INSTALL \
     --PACKAGES "ethtool ipmitool iproute2 ipxe lshw qemu-utils tftpd-hpa"
-  ARG REGISTRY=https://core.harbor.cloud.prz/openstack-helm
+  ARG REGISTRY=core.harbor.cloud.prz/openstack-helm
   SAVE IMAGE --push \
     ${REGISTRY}/${PROJECT}:${RELEASE} \
     ${REGISTRY}/${PROJECT}:${PROJECT_REF}

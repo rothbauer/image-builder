@@ -14,5 +14,5 @@ clone:
 image:
   FROM DOCKERFILE -f +clone/src/Dockerfile +clone/src/*
   LABEL org.opencontainers.image.source=https://github.com/vexxhost/atmosphere
-  ARG REGISTRY=https://core.harbor.cloud.prz/openstack-helm
+  ARG REGISTRY=core.harbor.cloud.prz/openstack-helm
   SAVE IMAGE --push ${REGISTRY}/capi-openstack-controller:${CAPO_VERSION}-${EPOCH}
