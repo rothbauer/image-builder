@@ -20,8 +20,8 @@ libvirt-tls-sidecar.build:
   ARG GOOS=linux
   ARG GOARCH=amd64
   ARG VARIANT
-  #COPY --dir cmd internal ./
-  #RUN GOARM=${VARIANT#"v"} go build -o main cmd/libvirt-tls-sidecar/main.go
+  COPY --dir cmd internal ./
+  RUN GOARM=${VARIANT#"v"} go build -o main cmd/libvirt-tls-sidecar/main.go
   SAVE ARTIFACT ./main
 
 libvirt-tls-sidecar.platform-image:
@@ -89,7 +89,7 @@ images:
   BUILD ./images/horizon+image --REGISTRY=${REGISTRY}
   BUILD ./images/ironic+image --REGISTRY=${REGISTRY}
   BUILD ./images/keystone+image --REGISTRY=${REGISTRY}
-  #BUILD ./images/kubernetes-entrypoint+image --REGISTRY=${REGISTRY}
+  BUILD ./images/kubernetes-entrypoint+image --REGISTRY=${REGISTRY}
   BUILD ./images/libvirtd+image --REGISTRY=${REGISTRY}
   BUILD ./images/magnum+image --REGISTRY=${REGISTRY}
   BUILD ./images/manila+image --REGISTRY=${REGISTRY}
