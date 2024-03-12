@@ -1,7 +1,7 @@
 VERSION 0.7
 
 ARG --global PROJECT=placement
-ARG --global RELEASE=2023.1
+ARG --global RELEASE=2023.2
 ARG --global PROJECT_REF=a361622d749d3b24aad638ec1b03a7d7124a87b3
 
 build:

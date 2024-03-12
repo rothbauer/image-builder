@@ -1,7 +1,7 @@
 VERSION 0.7
 
 ARG --global PROJECT=glance
-ARG --global RELEASE=2023.1
+ARG --global RELEASE=2023.2
 ARG --global PROJECT_REF=9a4a3067b5c7c7f8ee9363bd939a3d86b260d660
 
 build.plugin:
