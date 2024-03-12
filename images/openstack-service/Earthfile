@@ -66,7 +66,7 @@ requirements:
     sed -i 's/eventlet===0.33.1/eventlet===0.33.3/' /src/upper-constraints.txt && \
     sed -i 's/octavia-lib===3.2.0/octavia-lib===3.3.0/' /src/upper-constraints.txt && \
     sed -i 's/os-traits===2.10.0/os-traits===3.0.0/' /src/upper-constraints.txt && \
-    sed -i 's/xstatic===1.0.2/xstatic===1.0.3/' /src/upper-constraints.txt && \
+    sed -i 's/XStatic===1.0.2/XStatic===1.0.3/' /src/upper-constraints.txt && \
     sed -i '/glance-store/d' /src/upper-constraints.txt && \
     sed -i '/horizon/d' /src/upper-constraints.txt
   SAVE ARTIFACT /src/upper-constraints.txt
