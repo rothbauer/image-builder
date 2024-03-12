@@ -36,5 +36,5 @@ earthly:
   stage: build
   script:
     #- sleep 1h
-    #- earthly --verbose --ci --push -P +images --RELEASE="2023.1"
-    - earthly --verbose --ci --push -P +images
+    - earthly --verbose --ci --push -P +images --RELEASE="2023.2"
+    #- earthly --verbose --ci --push -P +images
