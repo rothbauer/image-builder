@@ -28,7 +28,10 @@ before_script:
   - until docker info >/dev/null; do sleep 1; done
   #- earthly --verbose sat ls
   - earthly bootstrap
-  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  # debug:
+  - echo "docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY"
+  #- "${HARBOR_HOST}/${HARBOR_PROJECT}/${CI_PROJECT_NAME}:${CI_COMMIT_TAG}"
+  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $HARBOR_HOST
 
 earthly:
   tags:
