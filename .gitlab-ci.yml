@@ -29,9 +29,9 @@ before_script:
   #- earthly --verbose sat ls
   - earthly bootstrap
   # debug:
-  - echo "$HARBOR_USERNAME -- $HARBOR_PASSWORD -- $HARBOR_OCI"
+  - echo "$HARBOR_OCI -- $HARBOR_HOST -- $HARBOR_URL"
   #- "${HARBOR_HOST}/${HARBOR_PROJECT}/${CI_PROJECT_NAME}:${CI_COMMIT_TAG}"
-  - docker login -u $HARBOR_USERNAME -p $HARBOR_PASSWORD $HARBOR_OCI
+  - docker login -u $HARBOR_USERNAME -p $HARBOR_PASSWORD $HARBOR_HOST
 
 earthly:
   tags:
