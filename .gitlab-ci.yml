@@ -19,7 +19,7 @@ variables:
   #FF_RESOLVE_FULL_TLS_CHAIN: "true"
   #EARTHLY_PUSH: "true"
   EARTHLY_USE_INLINE_CACHE: "true"
-  #EARTHLY_ADDITIONAL_BUILDKIT_CONFIG: |-
+  EARTHLY_ADDITIONAL_BUILDKIT_CONFIG: |-
     [registry."core.harbor.cloud.prz:443"]
       ca = ["/certs/client/ca.pem"]
   #KUBERNETES_CPU_REQUEST: "3"
