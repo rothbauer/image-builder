@@ -20,8 +20,9 @@ variables:
   #EARTHLY_PUSH: "true"
   EARTHLY_USE_INLINE_CACHE: "true"
   EARTHLY_ADDITIONAL_BUILDKIT_CONFIG: |-
-    [registry."core.harbor.cloud.prz:443"]
-      ca = ["/certs/client/ca.pem"]
+    [registry."core.harbor.cloud.prz"]
+      ca = ["/etc/gitlab-runner/certs/ca.crt"]
+      insecure = true
   #KUBERNETES_CPU_REQUEST: "3"
   #KUBERNETES_CPU_LIMIT: "5"
   #KUBERNETES_MEMORY_REQUEST: "2Gi"
@@ -63,8 +64,6 @@ earthly:
     - earthly
   stage: build
   script:
-    - mkdir -p /etc/gitlab-runner/certs/
-    - cp /certs/client/ca.pem /etc/gitlab-runner/certs/ca.crt 
     #- sleep 1h
     # configure smaller cache (TODO: find a way how to change path where earthly-cache is located, which is /var/lib/docker/volumes/earthly-cache by default under "scripts" mount, or find a way how to define the "scripts" volume under a different type as CSI)
     #- earthly config global.cache_size_mb 2000
