@@ -49,8 +49,6 @@ image: earthly/earthly:v0.8.4
 before_script:
   # install certificates
   - mkdir /root/.docker
-  # test / workaround:
-  - /usr/bin/earthly-entrypoint.sh
   - cat /etc/buildkitd.toml || true
   - cp /certs/client/*.pem /root/.docker/
   - mkdir -p /etc/gitlab-runner/certs/
