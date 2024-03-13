@@ -18,7 +18,9 @@ variables:
   DOCKER_DRIVER: overlay2
   #FF_RESOLVE_FULL_TLS_CHAIN: "true"
   EARTHLY_PUSH: "true"
-  
+  EARTHLY_ADDITIONAL_BUILDKIT_CONFIG: |-
+    [registry."core.harbor.cloud.prz"]
+      ca = ["/certs/client/ca.pem"]
   #KUBERNETES_CPU_REQUEST: "3"
   #KUBERNETES_CPU_LIMIT: "5"
   #KUBERNETES_MEMORY_REQUEST: "2Gi"
