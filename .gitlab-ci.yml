@@ -62,6 +62,7 @@ earthly:
   script:
     - mkdir -p /etc/gitlab-runner/certs/
     - cp /certs/client/ca.pem /etc/gitlab-runner/certs/ca.crt 
+    - curl https://core.harbor.cloud.prz/
     #- sleep 1h
     # configure smaller cache (TODO: find a way how to change path where earthly-cache is located, which is /var/lib/docker/volumes/earthly-cache by default under "scripts" mount, or find a way how to define the "scripts" volume under a different type as CSI)
     #- earthly config global.cache_size_mb 2000
