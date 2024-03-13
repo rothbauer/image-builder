@@ -19,10 +19,11 @@ variables:
   #FF_RESOLVE_FULL_TLS_CHAIN: "true"
   #EARTHLY_PUSH: "true"
   EARTHLY_USE_INLINE_CACHE: "true"
-  EARTHLY_ADDITIONAL_BUILDKIT_CONFIG: |-
-    [registry."core.harbor.cloud.prz"]
-      ca=["/etc/gitlab-runner/certs/ca.crt"]
-      insecure = true
+  # doesn't work... we have to pass this somehow to docker:dind
+  #EARTHLY_ADDITIONAL_BUILDKIT_CONFIG: |-
+  #  [registry."core.harbor.cloud.prz"]
+  #    ca=["/etc/gitlab-runner/certs/ca.crt"]
+  #    insecure = true
   #KUBERNETES_CPU_REQUEST: "3"
   #KUBERNETES_CPU_LIMIT: "5"
   #KUBERNETES_MEMORY_REQUEST: "2Gi"
@@ -51,6 +52,8 @@ before_script:
   - mkdir /root/.docker
   - cat /etc/buildkitd.toml || true
   - cp /certs/client/*.pem /root/.docker/
+  # test
+  - cp /certs/client/ca.pem /etc/ca.pem
   - mkdir -p /etc/gitlab-runner/certs/
   - cp /certs/client/ca.pem /etc/gitlab-runner/certs/ca.crt
   # wait for dockerd on runner pod's svc-0 container (it's not necessary but it helps with debugging)
