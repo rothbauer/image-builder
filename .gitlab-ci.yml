@@ -8,7 +8,7 @@ variables:
   DOCKER_HOST: "tcp://docker:2376" # for default docker image for docker hub
   # DOCKER_HOST: "tcp://core.harbor.cloud.prz-infra-docker:2376" # use this for our custom image from harbor
   # DOCKER_HOST: "tcp://localhost:2376"
-  DOCKER_TLS_VERIFY: 0
+  DOCKER_TLS_VERIFY: 1
   FORCE_COLOR: 1
   EARTHLY_EXEC_CMD: "/bin/sh"
   # service docker:dind container settings:
@@ -19,6 +19,7 @@ variables:
   #FF_RESOLVE_FULL_TLS_CHAIN: "true"
   #EARTHLY_PUSH: "true"
   EARTHLY_USE_INLINE_CACHE: "true"
+  EARTHLY_TLS_ENABLE: "false"
   #EARTHLY_DEBUG: "true"
   # doesn't work... we have to pass this somehow to docker:dind
   #EARTHLY_ADDITIONAL_BUILDKIT_CONFIG: |-
