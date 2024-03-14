@@ -57,6 +57,8 @@ variables:
 image: earthly/earthly:v0.8.4
 
 before_script:
+  # workaround 
+  - mkdir ~/.earthly/
   - echo "$EARTHLY_CUSTOM_CONFIG" > ~/.earthly/config.yml
   - cat ~/.earthly/config.yml
   # install certificates
