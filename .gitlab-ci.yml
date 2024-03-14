@@ -19,6 +19,7 @@ variables:
   #FF_RESOLVE_FULL_TLS_CHAIN: "true"
   #EARTHLY_PUSH: "true"
   EARTHLY_USE_INLINE_CACHE: "true"
+  EARTHLY_DEBUG: "true"
   # doesn't work... we have to pass this somehow to docker:dind
   #EARTHLY_ADDITIONAL_BUILDKIT_CONFIG: |-
   #  [registry."core.harbor.cloud.prz"]
