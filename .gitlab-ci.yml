@@ -8,7 +8,7 @@ variables:
   DOCKER_HOST: "tcp://docker:2376" # for default docker image for docker hub
   # DOCKER_HOST: "tcp://core.harbor.cloud.prz-infra-docker:2376" # use this for our custom image from harbor
   # DOCKER_HOST: "tcp://localhost:2376"
-  DOCKER_TLS_VERIFY: 1
+  DOCKER_TLS_VERIFY: 0
   FORCE_COLOR: 1
   EARTHLY_EXEC_CMD: "/bin/sh"
   # service docker:dind container settings:
