@@ -22,10 +22,17 @@ variables:
   EARTHLY_TLS_ENABLE: "false"
   #EARTHLY_DEBUG: "true"
   # doesn't work... we have to pass this somehow to docker:dind
-  EARTHLY_ADDITIONAL_BUILDKIT_CONFIG: |-
-    [registry."core.harbor.cloud.prz"]
-      ca=["/etc/gitlab-runner/certs/ca.crt"]
+  #EARTHLY_ADDITIONAL_BUILDKIT_CONFIG: |-
+  #  [registry."core.harbor.cloud.prz"]
+  #    ca=["/etc/gitlab-runner/certs/ca.crt"]
   #    insecure = true
+  EARTHLY_CUSTOM_CONFIG: |-
+    global:
+      buildkit_additional_args: ["-v", "/etc/ssl/certs/ca-certificates.crt:/etc/config/add.ca"]
+      buildkit_additional_config: |
+        [registry."core.harbor.cloud.prz"]
+          ca=["/etc/config/add.ca"]
+
   #KUBERNETES_CPU_REQUEST: "3"
   #KUBERNETES_CPU_LIMIT: "5"
   #KUBERNETES_MEMORY_REQUEST: "2Gi"
