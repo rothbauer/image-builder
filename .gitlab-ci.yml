@@ -51,7 +51,6 @@ image: earthly/earthly:v0.8.4
 before_script:
   # install certificates
   - mkdir /root/.docker
-  - cat /etc/buildkitd.toml || true
   - cp /certs/client/*.pem /root/.docker/
   # test
   - cp /certs/client/ca.pem /etc/ca.pem
