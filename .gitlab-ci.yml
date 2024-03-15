@@ -73,7 +73,7 @@ before_script:
   # run earthly bootstrap
   - earthly bootstrap
   # login to harbor.cloud.prz with docker
-  - docker login -u $HARBOR_USERNAME -p $HARBOR_PASSWORD $HARBOR_HOST
+  #- docker login -u $HARBOR_USERNAME -p $HARBOR_PASSWORD $HARBOR_HOST
 
 earthly:
   tags:
@@ -85,6 +85,6 @@ earthly:
     #- earthly config global.cache_size_mb 2000
     - docker login -u $HARBOR_USERNAME -p $HARBOR_PASSWORD $HARBOR_HOST
     - cd images/nova
-    - earthly --verbose --config ~/.earthly/config.yml --ci --push -P +image --RELEASE="2023.2"
-    ##- earthly --verbose --ci --push -P +images --RELEASE="2023.2"
+    ##- earthly --verbose --config ~/.earthly/config.yml --ci --push -P +image --RELEASE="2023.2"
+    - earthly --verbose --ci --push -P +images --RELEASE="2023.2"
     #- earthly --verbose --ci --push -P +images
