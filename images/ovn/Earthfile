@@ -5,7 +5,10 @@ ARG --global VERSION=23.03.0-69
 
 ovn-kubernetes:
   FROM --platform=linux/amd64 golang:1.20
-  GIT CLONE --branch master https://github.com/ovn-org/ovn-kubernetes /src
+  # TEMP FIX (by AR): current master (to the date of 2024-03-16) breaks patching and prevents Earthly finishing
+  # build. I will use a little bit older commit.  
+  GIT CLONE --branch 95c7a5e https://github.com/ovn-org/ovn-kubernetes /src
+  #GIT CLONE --branch master https://github.com/ovn-org/ovn-kubernetes /src
   WORKDIR /src
   COPY patches/ovn-kubernetes /patches
   DO ../+APT_INSTALL --PACKAGES "git"
