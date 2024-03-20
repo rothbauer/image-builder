@@ -8,4 +8,5 @@ Some parts were adopted from Vexxhost's Atmosphere (https://github.com/vexxhost/
 
 1/ We probably don't need cmd and internal directories as they are specific for Veexhost deployment but we 
 need more generic builds. We added them just have working PoC builder as a good start...
-2/ there was a problem with images/horizon/Earthfile on line 23: failed: "/src/main": not found; fix = comment out the line
+
+2/ Add our custom changes to Nova, Cinder, etc.
