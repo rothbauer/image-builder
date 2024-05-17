@@ -9,14 +9,14 @@ build:
   DO ../openstack-service+BUILD_VENV \
     --PROJECT=${PROJECT} \
     --PROJECT_REF=${PROJECT_REF} \
-    --PIP_PACKAGES="purestorage"
+    --PIP_PACKAGES="purestorage python-swiftclient"
 
 image:
   FROM ../openstack-service+image --RELEASE ${RELEASE} --PROJECT ${PROJECT}
   COPY +build/venv /var/lib/openstack
   COPY ../kubernetes+image/kubectl /usr/local/bin/kubectl
   DO ../+APT_INSTALL \
-    --PACKAGES "ceph-common lsscsi nvme-cli python3-rados python3-rbd qemu-utils sysfsutils udev util-linux"
+    --PACKAGES "ceph-common lsscsi nvme-cli python3-rados python3-rbd qemu-utils sysfsutils udev util-linux cryptsetup"
   ARG REGISTRY=core.harbor.cloud.prz/openstack-helm
   SAVE IMAGE --push \
     ${REGISTRY}/${PROJECT}:${RELEASE} \
