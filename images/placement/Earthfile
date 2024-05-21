@@ -13,6 +13,8 @@ build:
 image:
   FROM ../openstack-service+image --RELEASE ${RELEASE} --PROJECT ${PROJECT}
   COPY +build/venv /var/lib/openstack
+  DO ../+APT_INSTALL \
+    --PACKAGES "curl jq apache2 libapache2-mod-wsgi-py3"
   ARG REGISTRY=core.harbor.cloud.prz/openstack-helm
   SAVE IMAGE --push \
     ${REGISTRY}/${PROJECT}:${RELEASE} \
