@@ -12,7 +12,7 @@ platform-image:
     RUN echo "${RELEASE} is not supported on $(lsb_release -sc)"
     RUN exit 1
   END
-  DO ../+APT_INSTALL --PACKAGES="ceph-common cgroup-tools dmidecode ebtables iproute2 ipxe-qemu kmod libvirt-clients libvirt-daemon-system openssh-client openvswitch-switch ovmf pm-utils qemu-block-extra qemu-efi qemu-kvm seabios"
+  DO ../+APT_INSTALL --PACKAGES="ceph-common cgroup-tools dmidecode ebtables iproute2 ipxe-qemu kmod libvirt-clients libvirt-daemon-system openssh-client openvswitch-switch ovmf pm-utils qemu-block-extra qemu-efi qemu-kvm seabios dnsmasq"
   DO ../+CREATE_PROJECT_USER --PROJECT=nova
   ARG REGISTRY=core.harbor.cloud.prz/openstack-helm
   SAVE IMAGE --push ${REGISTRY}/libvirtd:${RELEASE}
