@@ -66,7 +66,7 @@ build.venv.runtime:
   SAVE ARTIFACT /venv
 
 image:
-  ARG RELEASE=2023.2
+  ARG RELEASE=2024.1
   FROM ./images/cloud-archive-base+image --RELEASE ${RELEASE}
   ENV ANSIBLE_PIPELINING=True
   DO ./images+APT_INSTALL --PACKAGES "rsync openssh-client"

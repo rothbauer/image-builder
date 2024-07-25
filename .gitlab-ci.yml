@@ -85,6 +85,6 @@ earthly:
     - docker login -u $HARBOR_USERNAME -p $HARBOR_PASSWORD $HARBOR_HOST
     ## build Nova only:
     ##- cd images/nova
-    ##- earthly --verbose --config ~/.earthly/config.yml --ci --push -P +image --RELEASE="2023.2"
-    - earthly --verbose --ci --use-inline-cache --save-inline-cache --push -P +images --RELEASE="2023.2"
+    ##- earthly --verbose --config ~/.earthly/config.yml --ci --push -P +image --RELEASE="2024.1"
+    - earthly --verbose --ci --use-inline-cache --save-inline-cache --push -P +images --RELEASE="2024.1"
     #- earthly --verbose --ci --push -P +images

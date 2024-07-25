@@ -1,7 +1,7 @@
 VERSION 0.7
 
 ARG --global PROJECT=manila
-ARG --global RELEASE=2023.2
+ARG --global RELEASE=2024.1
 ARG --global PROJECT_REF=a9cea65b45f0c0bf148b6ac9db0a8141c74fa2a6
 
 build:

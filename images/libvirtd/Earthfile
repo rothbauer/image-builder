@@ -1,7 +1,7 @@
 VERSION 0.7
 
 platform-image:
-  ARG RELEASE=2023.2
+  ARG RELEASE=2024.1
   FROM ../cloud-archive-base+image --RELEASE=${RELEASE}
   COPY keyrings/ceph.gpg /etc/apt/trusted.gpg.d/
   IF [ "$(lsb_release -sc)" = "focal" ]

@@ -1,7 +1,7 @@
 VERSION 0.7
 
 ARG --global PROJECT=ironic
-ARG --global RELEASE=2023.2
+ARG --global RELEASE=2024.1
 ARG --global PROJECT_REF=a1c4182d880e4654baa59c392296edb8afefde3d
 
 build:

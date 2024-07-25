@@ -1,7 +1,7 @@
 VERSION 0.7
 
 ARG --global PROJECT=nova
-ARG --global RELEASE=2023.2
+ARG --global RELEASE=2024.1
 ARG --global PROJECT_REF=1bbd44e16e51660eb4fea9d3c970a5aee99225a5
 
 build:
