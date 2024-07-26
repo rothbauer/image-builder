@@ -86,5 +86,5 @@ earthly:
     ## build Nova only:
     ##- cd images/nova
     ##- earthly --verbose --config ~/.earthly/config.yml --ci --push -P +image --RELEASE="2024.1"
-    - earthly --verbose --ci --use-inline-cache --save-inline-cache --push -P +images --RELEASE="2024.1"
+    - earthly --verbose --ci --use-inline-cache --save-inline-cache --push -P +image
     #- earthly --verbose --ci --push -P +images
