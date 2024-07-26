@@ -101,7 +101,6 @@ images:
   BUILD ./images/openvswitch+image --REGISTRY=${REGISTRY}
   BUILD ./images/ovn+images --REGISTRY=${REGISTRY}
   BUILD ./images/placement+image --REGISTRY=${REGISTRY}
-  BUILD ./images/senlin+image --REGISTRY=${REGISTRY}
   BUILD ./images/staffeln+image --REGISTRY=${REGISTRY}
   BUILD ./images/tempest+image --REGISTRY=${REGISTRY}
 

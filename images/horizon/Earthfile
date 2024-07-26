@@ -21,11 +21,10 @@ build:
   COPY (+build.plugin/src --PLUGIN=manila-ui) /manila-ui
   COPY (+build.plugin/src --PLUGIN=neutron-vpnaas-dashboard) /neutron-vpnaas-dashboard
   COPY (+build.plugin/src --PLUGIN=octavia-dashboard) /octavia-dashboard
-  COPY (+build.plugin/src --PLUGIN=senlin-dashboard) /senlin-dashboard
   DO ../openstack-service+BUILD_VENV \
     --PROJECT=${PROJECT} \
     --PROJECT_REF=${PROJECT_REF} \
-    --PIP_PACKAGES "/designate-dashboard /heat-dashboard /ironic-ui /magnum-ui /neutron-vpnaas-dashboard /octavia-dashboard /senlin-dashboard /manila-ui"
+    --PIP_PACKAGES "/designate-dashboard /heat-dashboard /ironic-ui /magnum-ui /neutron-vpnaas-dashboard /octavia-dashboard /manila-ui"
 
 image:
   FROM ../openstack-service+image --RELEASE ${RELEASE} --PROJECT ${PROJECT}
