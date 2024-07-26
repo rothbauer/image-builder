@@ -51,5 +51,5 @@ image:
   ENV PATH=/venv/bin:$PATH
   #COPY +build.collections/ /usr/share/ansible
   ARG tag=latest
-  ARG REGISTRY=core.harbor.cloud.prz/openstack-helm-test/base
+  ARG REGISTRY=core.harbor.cloud.prz/openstack-helm-test
   SAVE IMAGE --push ${REGISTRY}:${tag}
