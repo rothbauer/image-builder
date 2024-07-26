@@ -16,7 +16,7 @@ Some parts were adopted from Vexxhost's Atmosphere (https://github.com/vexxhost/
 
 ## Update references
 
-`grep -R 'global PROJECT_REF' | sed 's/images\/\([^\/]*\)\/Earthfile.*PROJECT_REF=/\1 /' | grep -v staffeln | while read project ref ; do new_ref=$(curl -s "https://github.com/openstack/${project}/tree/stable/2024.1" 2>&1 | grep -Po '(?<=currentOid":")[^"]*') ; sed "s/${ref}/${new_ref}/" -i images/${project}/Earthfile ; done`
+`grep -R _GIT_REF= /tmp/atmosphere | sed 's/.*images\/\([^\/]*\)\/Dockerfile.*_GIT_REF=/\1 /' | while read project ref ; do sed -i "s/global PROJECT_REF=.*/global PROJECT_REF=${ref}/" images/${project}/Earthfile ; done`
 
 ## Use current patches
 
