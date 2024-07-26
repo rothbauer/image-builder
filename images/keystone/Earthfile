@@ -2,7 +2,7 @@ VERSION 0.7
 
 ARG --global RELEASE=2024.1
 ARG --global PROJECT=keystone
-ARG --global PROJECT_REF=5a55e9de15c7f390e43addc5f3ff1a4809ec1a5b
+ARG --global PROJECT_REF=f8f451455fb11fb177148cfb88bed29caf18d38a
 
 build:
   FROM ../openstack-service+builder --RELEASE=${RELEASE}

@@ -2,7 +2,7 @@ VERSION 0.7
 
 ARG --global PROJECT=ironic
 ARG --global RELEASE=2024.1
-ARG --global PROJECT_REF=a1c4182d880e4654baa59c392296edb8afefde3d
+ARG --global PROJECT_REF=84fb43b81b9aab2e579ea961cb692a331ddf2125
 
 build:
   FROM ../openstack-service+builder --RELEASE=${RELEASE}

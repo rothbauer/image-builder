@@ -2,7 +2,7 @@ VERSION 0.7
 
 ARG --global PROJECT=barbican
 ARG --global RELEASE=2024.1
-ARG --global PROJECT_REF=a00fcade4138ffc52cd9c84b5999297966f019b5
+ARG --global PROJECT_REF=d99764e6112cedc6ca168a29fb0279dec2d94288
 
 build:
   FROM ../openstack-service+builder --RELEASE=${RELEASE}

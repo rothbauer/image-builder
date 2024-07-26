@@ -2,7 +2,7 @@ VERSION 0.7
 
 ARG --global PROJECT=horizon
 ARG --global RELEASE=2024.1
-ARG --global PROJECT_REF=4de36bb649c514f50d2a958c9277097a08b23cec
+ARG --global PROJECT_REF=dcaf0cc51fe998ca6de89a82a3cdadd26131830b
 
 build.plugin:
   ARG PLUGIN

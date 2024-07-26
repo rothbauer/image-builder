@@ -2,7 +2,7 @@ VERSION 0.7
 
 ARG --global PROJECT=manila
 ARG --global RELEASE=2024.1
-ARG --global PROJECT_REF=a9cea65b45f0c0bf148b6ac9db0a8141c74fa2a6
+ARG --global PROJECT_REF=1d00fb78a8c1d5c2bdc52f3ff6347aa0f8361e90
 
 build:
   FROM ../openstack-service+builder --RELEASE=${RELEASE}

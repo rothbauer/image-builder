@@ -2,7 +2,7 @@ VERSION 0.7
 
 ARG --global PROJECT=placement
 ARG --global RELEASE=2024.1
-ARG --global PROJECT_REF=a361622d749d3b24aad638ec1b03a7d7124a87b3
+ARG --global PROJECT_REF=af00c864e98ae76cae3e621ad95868234d027882
 
 build:
   FROM ../openstack-service+builder --RELEASE=${RELEASE}
