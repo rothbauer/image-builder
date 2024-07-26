@@ -1,0 +1,18 @@
+VERSION 0.7
+
+platform-image:
+  FROM ../base+image
+  DO ../+CREATE_PROJECT_USER \
+    --PROJECT=nova \
+    --SHELL=/bin/bash
+  DO ../+APT_INSTALL \
+    --PACKAGES "openssh-server openssh-client"
+  RUN \
+    chown -R nova: /etc/ssh && \
+    mkdir /var/run/sshd && \
+    chmod 0755 /var/run/sshd
+  ARG REGISTRY=core.harbor.cloud.prz/openstack-helm
+  SAVE IMAGE --push ${REGISTRY}/nova-ssh:latest
+
+image:
+  BUILD --platform linux/amd64 +platform-image
