@@ -24,7 +24,7 @@ build:
   DO ../openstack-service+BUILD_VENV \
     --PROJECT=${PROJECT} \
     --PROJECT_REF=${PROJECT_REF} \
-    --PIP_PACKAGES "/designate-dashboard /heat-dashboard /ironic-ui /magnum-ui /neutron-vpnaas-dashboard /octavia-dashboard /manila-ui"
+    --PIP_PACKAGES "/designate-dashboard /heat-dashboard /horizon /magnum-ui /neutron-vpnaas-dashboard /octavia-dashboard /manila-ui pymemcache"
 
 image:
   FROM ../openstack-service+image --RELEASE ${RELEASE} --PROJECT ${PROJECT}
