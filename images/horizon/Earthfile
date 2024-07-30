@@ -16,7 +16,6 @@ build:
   FROM ../openstack-service+builder --RELEASE=${RELEASE}
   COPY (+build.plugin/src --PLUGIN=designate-dashboard) /designate-dashboard
   COPY (+build.plugin/src --PLUGIN=heat-dashboard) /heat-dashboard
-  COPY (+build.plugin/src --PLUGIN=ironic-ui) /ironic-ui
   COPY (+build.plugin/src --PLUGIN=magnum-ui) /magnum-ui
   COPY (+build.plugin/src --PLUGIN=manila-ui) /manila-ui
   COPY (+build.plugin/src --PLUGIN=neutron-vpnaas-dashboard) /neutron-vpnaas-dashboard
