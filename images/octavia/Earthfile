@@ -9,7 +9,7 @@ build:
   DO ../openstack-service+BUILD_VENV \
     --PROJECT=${PROJECT} \
     --PROJECT_REF=${PROJECT_REF} \
-    --PIP_PACKAGES="ovn-octavia-provider"
+    --PIP_PACKAGES="ovn-octavia-provider python-openstackclient"
 
 image:
   FROM ../openstack-service+image --RELEASE ${RELEASE} --PROJECT ${PROJECT}
