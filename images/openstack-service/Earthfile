@@ -19,9 +19,9 @@ GIT_CHECKOUT:
     git remote set-url origin ${PROJECT_REPO} && \
     git fetch --unshallow
   COPY --if-exists patches/${PROJECT} /patches
-  #IF [ -d /patches ]
-  #  RUN git apply --verbose /patches/*.patch
-  #END
+  IF [ -d /patches ]
+    RUN git apply --verbose /patches/*.patch
+  END
 
 BUILD_VENV:
   FUNCTION
