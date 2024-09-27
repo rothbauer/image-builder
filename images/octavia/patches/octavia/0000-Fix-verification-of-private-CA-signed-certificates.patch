@@ -1,0 +1,64 @@
+From 6c34fb68e88060e28e38e6f430fb1011bd5323ef Mon Sep 17 00:00:00 2001
+From: Seunghun Lee <seunghun@stackhpc.com>
+Date: Mon, 23 Sep 2024 16:38:26 +0100
+Subject: [PATCH] Fix verification of private CA signed certificates
+
+When using certificate that was signed by private CA
+(including self-signed certs) on neutron endpoints,
+certificate verification fails.
+
+This was because custom certificate was not used when creating
+user's session even though the custom certificate file path is
+provided from configuration file of octavia.
+
+Fixing by feeding neutron cafile as a keyword argument.
+
+Co-authored-by: Ilia Kerbs
+
+Closes-Bug: #2046382
+
+Change-Id: Ia92fa6140b0fc608281e846d0635dd28217f2630
+---
+ octavia/common/clients.py                                 | 8 +++++++-
+ ...f-private-ca-signed-certificates-b9386a0d92627b03.yaml | 5 +++++
+ 2 files changed, 12 insertions(+), 1 deletion(-)
+ create mode 100644 releasenotes/notes/fix-verification-of-private-ca-signed-certificates-b9386a0d92627b03.yaml
+
+diff --git a/octavia/common/clients.py b/octavia/common/clients.py
+index 26f5bf79ad..c7b4c319b9 100644
+--- a/octavia/common/clients.py
++++ b/octavia/common/clients.py
+@@ -111,6 +111,7 @@ class NeutronAuth:
+         client.
+         """
+         sess = keystone.KeystoneSession('neutron').get_session()
++        kwargs = {}
+         neutron_endpoint = CONF.neutron.endpoint_override
+         if neutron_endpoint is None:
+             endpoint_data = sess.get_endpoint_data(
+@@ -119,8 +120,13 @@ class NeutronAuth:
+                 region_name=CONF.neutron.region_name)
+             neutron_endpoint = endpoint_data.catalog_url
+ 
++        neutron_cafile = getattr(CONF.neutron, "cafile", None)
++        insecure = getattr(CONF.neutron, "insecure", False)
++        kwargs['verify'] = not insecure
++        if neutron_cafile is not None and not insecure:
++            kwargs['verify'] = neutron_cafile
+         user_auth = token_endpoint.Token(neutron_endpoint, context.auth_token)
+-        user_sess = session.Session(auth=user_auth)
++        user_sess = session.Session(auth=user_auth, **kwargs)
+ 
+         conn = openstack.connection.Connection(
+             session=user_sess, oslo_conf=CONF)
+diff --git a/releasenotes/notes/fix-verification-of-private-ca-signed-certificates-b9386a0d92627b03.yaml b/releasenotes/notes/fix-verification-of-private-ca-signed-certificates-b9386a0d92627b03.yaml
+new file mode 100644
+index 0000000000..8a3dab18d2
+--- /dev/null
++++ b/releasenotes/notes/fix-verification-of-private-ca-signed-certificates-b9386a0d92627b03.yaml
+@@ -0,0 +1,5 @@
++---
++fixes:
++  - |
++    Fix verification of private CA signed certificates when using neutron
++    endpoints.
