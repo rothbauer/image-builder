@@ -1,10 +1,8 @@
 VERSION 0.7
 
 ARG --global PROJECT=octavia
-ARG --global RELEASE=2024.2
-#ARG --global RELEASE=2024.1
-ARG --global PROJECT_REF=20d97469e1047f911347cdb2503612033b9f0075
-#ARG --global PROJECT_REF=3af5401b81d7132af7939b64e7ef865629a47aad
+ARG --global RELEASE=2024.1
+ARG --global PROJECT_REF=3af5401b81d7132af7939b64e7ef865629a47aad
 
 build:
   FROM ../openstack-service+builder --RELEASE=${RELEASE}
