@@ -84,8 +84,8 @@ images:
 #  BUILD ./images/cinder+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/cluster-api-provider-openstack+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/designate+image --REGISTRY=${REGISTRY}
-  BUILD ./images/glance+image --REGISTRY=${REGISTRY}
-#  BUILD ./images/heat+image --REGISTRY=${REGISTRY}
+#  BUILD ./images/glance+image --REGISTRY=${REGISTRY}
+  BUILD ./images/heat+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/horizon+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/ironic+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/keystone+image --REGISTRY=${REGISTRY}
