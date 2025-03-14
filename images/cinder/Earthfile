@@ -16,7 +16,7 @@ image:
   COPY +build/venv /var/lib/openstack
   COPY ../kubernetes+image/kubectl /usr/local/bin/kubectl
   DO ../+APT_INSTALL \
-    --PACKAGES "ceph-common lsscsi nvme-cli python3-rados python3-rbd qemu-utils sysfsutils udev util-linux cryptsetup apache2 libapache2-mod-wsgi-py3 nfs-common netbase strace netcat"
+    --PACKAGES "ceph-common lsscsi nvme-cli python3-rados python3-rbd qemu-utils sysfsutils udev util-linux cryptsetup apache2 libapache2-mod-wsgi-py3"
   ARG REGISTRY=core.harbor.cloud.prz/openstack-helm
   SAVE IMAGE --push \
     ${REGISTRY}/${PROJECT}:${RELEASE} \
