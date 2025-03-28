@@ -15,7 +15,7 @@ platform-image:
   FROM ../openstack-service+image --RELEASE ${RELEASE} --PROJECT ${PROJECT}
   COPY +build/venv /var/lib/openstack
   DO ../+APT_INSTALL \
-    --PACKAGES "ceph-common genisoimage iproute2 libosinfo-bin lsscsi ndctl nvme-cli openssh-client ovmf python3-libvirt python3-rados python3-rbd qemu-efi-aarch64 qemu-utils sysfsutils udev util-linux apache2 libapache2-mod-wsgi-py3 cryptsetup net-tools openssh-server"
+    --PACKAGES "ceph-common genisoimage iproute2 libosinfo-bin lsscsi ndctl nvme-cli openssh-client ovmf python3-libvirt python3-rados python3-rbd python3-gi qemu-efi-aarch64 qemu-utils sysfsutils udev util-linux apache2 libapache2-mod-wsgi-py3 cryptsetup net-tools openssh-server"
   GIT CLONE --branch v1.4.0 https://github.com/novnc/noVNC.git /usr/share/novnc
   ARG REGISTRY=core.harbor.cloud.prz/openstack-helm
   SAVE IMAGE --push \

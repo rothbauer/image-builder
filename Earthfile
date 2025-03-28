@@ -81,7 +81,7 @@ images:
   ARG REGISTRY=core.harbor.cloud.prz/openstack-helm
 #  BUILD +libvirt-tls-sidecar.image --REGISTRY=${REGISTRY}
 #  BUILD ./images/barbican+image --REGISTRY=${REGISTRY}
-  BUILD ./images/cinder+image --REGISTRY=${REGISTRY}
+#  BUILD ./images/cinder+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/cluster-api-provider-openstack+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/designate+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/glance+image --REGISTRY=${REGISTRY}
@@ -96,7 +96,7 @@ images:
 #  BUILD ./images/netoffload+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/neutron+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/nova-ssh+image --REGISTRY=${REGISTRY}
-#  BUILD ./images/nova+image --REGISTRY=${REGISTRY}
+  BUILD ./images/nova+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/octavia+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/openvswitch+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/ovn+images --REGISTRY=${REGISTRY}
