@@ -84,7 +84,7 @@ images:
 #  BUILD ./images/cinder+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/cluster-api-provider-openstack+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/designate+image --REGISTRY=${REGISTRY}
-#  BUILD ./images/glance+image --REGISTRY=${REGISTRY}
+  BUILD ./images/glance+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/heat+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/horizon+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/ironic+image --REGISTRY=${REGISTRY}
@@ -96,7 +96,7 @@ images:
 #  BUILD ./images/netoffload+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/neutron+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/nova-ssh+image --REGISTRY=${REGISTRY}
-  BUILD ./images/nova+image --REGISTRY=${REGISTRY}
+#  BUILD ./images/nova+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/octavia+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/openvswitch+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/ovn+images --REGISTRY=${REGISTRY}
