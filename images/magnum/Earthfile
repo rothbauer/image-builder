@@ -2,14 +2,14 @@ VERSION 0.7
 
 ARG --global PROJECT=magnum
 ARG --global RELEASE=2024.1
-ARG --global PROJECT_REF=c613ea4e419edc0086116da07e93cf19206746e1
+ARG --global PROJECT_REF=b47479272a5ea0fc4b0cc81fd51f1ef6f20ccc9a
 
 build:
   FROM ../openstack-service+builder --RELEASE=${RELEASE}
   DO ../openstack-service+BUILD_VENV \
     --PROJECT=${PROJECT} \
     --PROJECT_REF=${PROJECT_REF} \
-    --PIP_PACKAGES="magnum-cluster-api==0.24.2"
+    --PIP_PACKAGES="magnum-cluster-api==0.30.0"
 
 image:
   FROM ../openstack-service+image --RELEASE ${RELEASE} --PROJECT ${PROJECT}
