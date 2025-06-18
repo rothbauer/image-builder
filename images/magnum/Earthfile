@@ -1,8 +1,9 @@
 VERSION 0.7
 
 ARG --global PROJECT=magnum
-ARG --global RELEASE=2024.1
-ARG --global PROJECT_REF=b47479272a5ea0fc4b0cc81fd51f1ef6f20ccc9a
+#ARG --global RELEASE=2024.1
+ARG --global RELEASE=master
+ARG --global PROJECT_REF=cbeb6a89aa4cc06548fe15b36a041200fd49821c
 
 build:
   FROM ../openstack-service+builder --RELEASE=${RELEASE}
