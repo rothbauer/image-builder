@@ -2,7 +2,7 @@ VERSION 0.7
 
 ARG --global PROJECT=cinder
 ARG --global RELEASE=2024.1
-ARG --global PROJECT_REF=db98dc207060da234c32a563c13cac1edbd62952
+ARG --global PROJECT_REF=8526635c53bc7ee720cec2585cd9f179e8638af9
 
 build:
   FROM ../openstack-service+builder --RELEASE=${RELEASE}

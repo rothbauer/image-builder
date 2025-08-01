@@ -2,7 +2,7 @@ VERSION 0.7
 
 ARG --global PROJECT=neutron
 ARG --global RELEASE=2024.1
-ARG --global PROJECT_REF=c6d4a3e364b11568dfd36a11551f553c11c48308
+ARG --global PROJECT_REF=d5ed882bbd3686351b4938f58461f469ee82c860
 
 build:
   FROM ../openstack-service+builder --RELEASE=${RELEASE}

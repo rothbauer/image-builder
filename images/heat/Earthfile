@@ -2,7 +2,7 @@ VERSION 0.7
 
 ARG --global PROJECT=heat
 ARG --global RELEASE=2024.1
-ARG --global PROJECT_REF=435f17f855900af1010223aad0c3c8f585957f41
+ARG --global PROJECT_REF=d87a50a249f372498616248ecd51ebc01929bfce
 
 build:
   FROM ../openstack-service+builder --RELEASE=${RELEASE}
