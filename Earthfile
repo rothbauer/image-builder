@@ -96,8 +96,8 @@ images:
 #  BUILD ./images/netoffload+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/neutron+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/nova-ssh+image --REGISTRY=${REGISTRY}
-#  BUILD ./images/nova+image --REGISTRY=${REGISTRY}
-  BUILD ./images/octavia+image --REGISTRY=${REGISTRY}
+  BUILD ./images/nova+image --REGISTRY=${REGISTRY}
+#  BUILD ./images/octavia+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/openvswitch+image --REGISTRY=${REGISTRY}
 #  BUILD ./images/ovn+images --REGISTRY=${REGISTRY}
 #  BUILD ./images/placement+image --REGISTRY=${REGISTRY}

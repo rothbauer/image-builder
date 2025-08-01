@@ -2,7 +2,7 @@ VERSION 0.7
 
 ARG --global PROJECT=nova
 ARG --global RELEASE=2024.1
-ARG --global PROJECT_REF=11301e7e3f0d81a3368632f90608e30d9c647111
+ARG --global PROJECT_REF=ad1bd175ae57e45dbfa8014f945cbc42d62ad8ce
 
 build:
   FROM ../openstack-service+builder --RELEASE=${RELEASE}
