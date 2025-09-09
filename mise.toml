@@ -1,4 +1,0 @@
-[tools]
-"pipx:reno" = "latest"
-"uv" = "latest"
-"vale" = "latest"

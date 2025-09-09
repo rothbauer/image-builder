@@ -1,21 +1,5 @@
-# Atmosphere
+# Image Builder
 
-* Documentation: https://vexxhost.github.io/atmosphere/
-
-## Community
-
-If you have any questions and discussions about Atmosphere, you can join the
-community:
-
-* [#atmosphere](https://kubernetes.slack.com/archives/C056YSPJB7U) channel
-  on the Kubernetes Slack. If you are new to Kubernetes Slack workspace,
-  [Join the Kubernetes Slack workspace](https://slack.kubernetes.io/) first.
-
-## Contributing
-
-You'll need to make sure that you have [pre-commit](https://pre-commit.com)
-setup and installed in your environment by running these commands::
-
-```bash
-pre-commit install --hook-type commit-msg
-```
+This is a standalone image builder derived from Vexxhost's Atmosphere. It's meant 
+to be used by GitLab CI/CD for automatic builds, but manual usage is also possible
+by simply running `docker buildx bake`.

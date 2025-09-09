@@ -1,5 +1,5 @@
 variable "REGISTRY" {
-    default = "harbor.atmosphere.dev/library"
+    default = "core.harbor.cloud.prz/openstack-helm-test"
 }
 
 variable "TAG" {

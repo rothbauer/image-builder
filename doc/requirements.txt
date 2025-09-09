@@ -1,7 +1,0 @@
-furo
-reno
-six
-sphinx
-sphinx-autobuild
-sphinx-copybutton
-sphinxcontrib-mermaid

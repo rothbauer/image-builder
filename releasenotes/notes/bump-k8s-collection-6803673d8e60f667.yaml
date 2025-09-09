@@ -1,5 +1,0 @@
----
-upgrade:
-  - |
-    Bump Kubernetes collection from 2.0.1 to 2.3.2 fix bugs
-    and add new features.
