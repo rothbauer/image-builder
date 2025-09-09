@@ -1,0 +1,28 @@
+## Misc
+*.tar.gz
+__pycache__
+tests/output
+*.orig
+*.rej
+.direnv
+output
+.stestr
+.tox
+doc/build
+collections/
+*.egg-info
+CHANGELOG.rst
+target
+
+## Editors
+.idea
+.vscode
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+*~
+[._]*.un~
+Session.vim
+Sessionx.vim
