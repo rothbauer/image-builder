@@ -16,7 +16,8 @@ uv pip install \
         purestorage \
         python-3parclient \
         storpool \
-        storpool.spopenstack
+        storpool.spopenstack \
+        python-swiftclient
 EOF
 ADD --chmod=644 \
     https://github.com/storpool/storpool-openstack-integration/raw/master/drivers/cinder/openstack/caracal/storpool.py \
@@ -29,7 +30,7 @@ FROM openstack-python-runtime
 RUN <<EOF bash -xe
 apt-get update -qq
 apt-get install -qq -y --no-install-recommends \
-    ceph-common dmidecode lsscsi nfs-common nvme-cli python3-rados python3-rbd qemu-utils qemu-block-extra sysfsutils udev util-linux
+    ceph-common dmidecode lsscsi nfs-common nvme-cli python3-rados python3-rbd qemu-utils qemu-block-extra sysfsutils udev util-linux cryptsetup apache2 libapache2-mod-wsgi-py3
 apt-get clean
 rm -rf /var/lib/apt/lists/*
 EOF
