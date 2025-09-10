@@ -1,0 +1,14 @@
+---
+
+stages:
+  - build
+
+build_image:
+  stage: build
+  tags:
+    - image-builder-vm-local
+  script:
+    - docker login -u "$HARBOR_USERNAME" -p "$HARBOR_PASSWORD" "$HARBOR_HOST"
+    # by default platform is set t o both linux/amd64 and linux/arm64, but we
+    # don't need arm64 yet (moreover it needs more things to set up)
+    - docker buildx bake --push --set *.platform=linux/amd64

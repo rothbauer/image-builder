@@ -13,17 +13,17 @@ build.venv.runtime:
   RUN pip install -r requirements.txt
   SAVE ARTIFACT /venv
 
-build.collections:
-  FROM +build.venv.runtime
-  COPY charts /src/charts
-  COPY meta /src/meta
-  COPY playbooks /src/playbooks
-  COPY plugins /src/plugins
-  COPY roles /src/roles
-  COPY galaxy.yml /src/galaxy.yml
-  RUN ansible-galaxy collection install --collections-path /usr/share/ansible/collections /src
-  SAVE ARTIFACT /usr/share/ansible/collections
-  SAVE IMAGE --cache-hint
+#build.collections:
+#  FROM +build.venv.runtime
+#  COPY charts /src/charts
+#  COPY meta /src/meta
+#  COPY playbooks /src/playbooks
+#  COPY plugins /src/plugins
+#  COPY roles /src/roles
+#  COPY galaxy.yml /src/galaxy.yml
+#  RUN ansible-galaxy collection install --collections-path /usr/share/ansible/collections /src
+#  SAVE ARTIFACT /usr/share/ansible/collections
+#  SAVE IMAGE --cache-hint
 
 image:
   FROM ubuntu:jammy
@@ -38,5 +38,5 @@ image:
   ENV PATH=/venv/bin:$PATH
   COPY +build.collections/ /usr/share/ansible
   ARG tag=latest
-  ARG REGISTRY=ghcr.io/vexxhost/atmosphere
+  ARG REGISTRY=core.harbor.cloud.prz/openstack-helm-test
   SAVE IMAGE --push ${REGISTRY}:${tag}

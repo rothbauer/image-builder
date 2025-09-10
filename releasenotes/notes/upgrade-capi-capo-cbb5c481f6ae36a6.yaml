@@ -1,4 +1,0 @@
----
-upgrade:
-  - |
-    Upgrade CAPI and CAPO version to 1.10.5 and 0.12.4 respectively.
