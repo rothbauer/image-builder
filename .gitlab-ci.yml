@@ -1,90 +1,12 @@
 ---
 
-services:
-  #- core.harbor.cloud.prz/infra/docker:dind
-  - docker:dind
+stages:
+  - build
 
-variables:
-  DOCKER_HOST: "tcp://docker:2376" # for default docker image for docker hub
-  # DOCKER_HOST: "tcp://core.harbor.cloud.prz-infra-docker:2376" # use this for our custom image from harbor
-  # DOCKER_HOST: "tcp://localhost:2376"
-  DOCKER_TLS_VERIFY: 1
-  FORCE_COLOR: 1
-  EARTHLY_EXEC_CMD: "/bin/sh"
-  # service docker:dind container settings:
-  DOCKER_TLS_CERTDIR: "/certs"
-  DOCKER_TLS_PATH: "/certs/client"
-  #DOCKER_TLS_CERTDIR: ""
-  DOCKER_DRIVER: overlay2
-  #FF_RESOLVE_FULL_TLS_CHAIN: "true"
-  #EARTHLY_PUSH: "true"
-  EARTHLY_USE_INLINE_CACHE: "true"
-  EARTHLY_TLS_ENABLE: "false"
-  #EARTHLY_DEBUG: "true"
-  # doesn't work... we have to pass this somehow to docker:dind
-  #EARTHLY_ADDITIONAL_BUILDKIT_CONFIG: |-
-  #  [registry."core.harbor.cloud.prz"]
-  #    ca=["/etc/gitlab-runner/certs/ca.crt"]
-  #    insecure = true
-  EARTHLY_CUSTOM_CONFIG: |-
-    global:
-      buildkit_additional_args: ["-v", "/etc/ssl/certs/ca-certificates.crt:/etc/config/add.ca"]
-      buildkit_additional_config: |
-        [registry."core.harbor.cloud.prz"]
-          ca=["/etc/config/add.ca"]
-
-  #KUBERNETES_CPU_REQUEST: "3"
-  #KUBERNETES_CPU_LIMIT: "5"
-  #KUBERNETES_MEMORY_REQUEST: "2Gi"
-  #KUBERNETES_MEMORY_LIMIT: "4Gi"
-  #KUBERNETES_EPHEMERAL_STORAGE_REQUEST: "4Gi"
-  #KUBERNETES_EPHEMERAL_STORAGE_LIMIT: "6Gi"
-
-  #KUBERNETES_HELPER_CPU_REQUEST: "3"
-  #KUBERNETES_HELPER_CPU_LIMIT: "5"
-  #KUBERNETES_HELPER_MEMORY_REQUEST: "2Gi"
-  #KUBERNETES_HELPER_MEMORY_LIMIT: "4Gi"
-  #KUBERNETES_HELPER_EPHEMERAL_STORAGE_REQUEST: "4Gi"
-  #KUBERNETES_HELPER_EPHEMERAL_STORAGE_LIMIT: "6Gi"
-
-  #KUBERNETES_SERVICE_CPU_REQUEST: "10"
-  #KUBERNETES_SERVICE_CPU_LIMIT: "12"
-  #KUBERNETES_SERVICE_MEMORY_REQUEST: "60Gi"
-  #KUBERNETES_SERVICE_MEMORY_LIMIT: "80Gi"
-  #KUBERNETES_SERVICE_EPHEMERAL_STORAGE_REQUEST: "4Gi"
-  #KUBERNETES_SERVICE_EPHEMERAL_STORAGE_LIMIT: "6Gi"
-
-image: earthly/earthly:v0.8.4
-
-before_script:
-  # workaround 
-  - mkdir ~/.earthly/
-  - echo "$EARTHLY_CUSTOM_CONFIG" > ~/.earthly/config.yml
-  - cat ~/.earthly/config.yml
-  # install certificates
-  - mkdir /root/.docker
-  - cp /certs/client/*.pem /root/.docker/
-  - cp /certs/client/ca.pem /etc/ca.pem
-  - mkdir -p /etc/gitlab-runner/certs/
-  - cp /certs/client/ca.pem /etc/gitlab-runner/certs/ca.crt
-  # wait for dockerd on runner pod's svc-0 container (it's not necessary but it helps with debugging)
-  - until docker info >/dev/null; do sleep 1; done
-  # run earthly bootstrap
-  - earthly bootstrap
-  # login to harbor.cloud.prz with docker
-  #- docker login -u $HARBOR_USERNAME -p $HARBOR_PASSWORD $HARBOR_HOST
-
-earthly:
-  tags:
-    - earthly
+build_image:
   stage: build
+  tags:
+    - image-builder-vm-local
   script:
-    #- sleep 1h
-    # configure smaller cache (TODO: find a way how to change path where earthly-cache is located, which is /var/lib/docker/volumes/earthly-cache by default under "scripts" mount, or find a way how to define the "scripts" volume under a different type as CSI)
-    #- earthly config global.cache_size_mb 2000
-    - docker login -u $HARBOR_USERNAME -p $HARBOR_PASSWORD $HARBOR_HOST
-    ## build Nova only:
-    ##- cd images/nova
-    ##- earthly --verbose --config ~/.earthly/config.yml --ci --push -P +image --RELEASE="2024.1"
-    - earthly --verbose --ci --use-inline-cache --save-inline-cache --push -P +images --RELEASE="2024.1"
-    #- earthly --verbose --ci --push -P +images
+    - docker login -u "$HARBOR_USERNAME" -p "$HARBOR_PASSWORD" "$HARBOR_HOST"
+    - docker buildx bake --push
