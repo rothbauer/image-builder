@@ -3,7 +3,7 @@ variable "REGISTRY" {
 }
 
 variable "TAG" {
-    default = "2025.1"
+    default = "latest"
 }
 
 target "ubuntu" {
@@ -81,8 +81,7 @@ target "keepalived" {
     }
 
     tags = [
-        "${REGISTRY}/keepalived:${TAG}",
-        "${REGISTRY}/keepalived:latest"
+        "${REGISTRY}/keepalived:${TAG}"
     ]
 }
 
@@ -100,7 +99,7 @@ target "libvirtd" {
 
     tags = [
         "${REGISTRY}/libvirtd:${TAG}",
-        "${REGISTRY}/libvirtd:latest"
+        "${REGISTRY}/libvirtd:2025.1"
     ]
 }
 
@@ -114,8 +113,7 @@ target "netoffload" {
     }
 
     tags = [
-        "${REGISTRY}/netoffload:${TAG}",
-        "${REGISTRY}/netoffload:latest"
+        "${REGISTRY}/netoffload:${TAG}"
     ]
 }
 
@@ -134,7 +132,7 @@ target "nova-ssh" {
 
     tags = [
         "${REGISTRY}/nova-ssh:${TAG}",
-        "${REGISTRY}/nova-ssh:latest"
+        "${REGISTRY}/nova-ssh:2025.1"
     ]
 }
 
@@ -148,7 +146,7 @@ target "openvswitch" {
 
     tags = [
         "${REGISTRY}/openvswitch:${TAG}",
-        "${REGISTRY}/openvswitch:latest"
+        "${REGISTRY}/openvswitch:3.3"
     ]
 }
 
@@ -173,7 +171,7 @@ target "ovn" {
 
     tags = [
         "${REGISTRY}/ovn-${component}:${TAG}",
-        "${REGISTRY}/ovn-${component}:latest"
+        "${REGISTRY}/ovn-${component}:24.03"
     ]
 }
 
@@ -187,8 +185,7 @@ target "python-openstackclient" {
     }
 
     tags = [
-        "${REGISTRY}/python-openstackclient:${TAG}",
-        "${REGISTRY}/python-openstackclient:latest"
+        "${REGISTRY}/python-openstackclient:${TAG}"
     ]
 }
 
@@ -220,7 +217,7 @@ target "neutron" {
 
     tags = [
         "${REGISTRY}/neutron:${TAG}",
-        "${REGISTRY}/neutron:latest"
+        "${REGISTRY}/neutron:2025.1"
     ]
 }
 
@@ -262,7 +259,7 @@ target "openstack" {
 
     tags = [
         "${REGISTRY}/${service}:${TAG}",
-        "${REGISTRY}/${service}:latest"
+        "${REGISTRY}/${service}:2025.1"
     ]
 }
 
