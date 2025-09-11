@@ -81,7 +81,7 @@ target "keepalived" {
     }
 
     tags = [
-        "${REGISTRY}/keepalived:${TAG}"
+        "${REGISTRY}/keepalived:${TAG}",
         "${REGISTRY}/keepalived:latest"
     ]
 }
