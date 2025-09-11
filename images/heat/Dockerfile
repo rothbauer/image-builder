@@ -17,7 +17,7 @@ FROM openstack-python-runtime
 RUN <<EOF bash -xe
 apt-get update -qq
 apt-get install -qq -y --no-install-recommends \
-    curl jq
+    curl jq apache2 libapache2-mod-wsgi-py3
 apt-get clean
 rm -rf /var/lib/apt/lists/*
 EOF

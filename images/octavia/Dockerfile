@@ -15,7 +15,8 @@ RUN --mount=type=cache,target=/root/.cache/uv <<EOF bash -xe
 uv pip install \
     --constraint /upper-constraints.txt \
         /src/octavia[redis] \
-        /src/ovn-octavia-provider
+        /src/ovn-octavia-provider \
+        python-openstackclient
 EOF
 
 FROM openstack-python-runtime

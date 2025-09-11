@@ -17,7 +17,11 @@ uv pip install \
         /src/glance \
         /src/glance_store[cinder] \
         storpool \
-        storpool.spopenstack
+        storpool.spopenstack \
+        os-brick \
+        oslo.rootwrap \
+        python-swiftclient \
+        python-cinderclient
 EOF
 ADD --chmod=644 \
     https://github.com/storpool/storpool-openstack-integration/raw/master/drivers/os_brick/openstack/caracal/storpool.py \

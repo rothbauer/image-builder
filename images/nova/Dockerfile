@@ -18,7 +18,8 @@ uv pip install \
         /src/nova-scheduler-filters \
         python-ironicclient \
         storpool \
-        storpool.spopenstack
+        storpool.spopenstack \
+        python-barbicanclient
 EOF
 ADD --chmod=644 \
     https://github.com/storpool/storpool-openstack-integration/raw/master/drivers/os_brick/openstack/caracal/storpool.py \
@@ -29,7 +30,7 @@ ADD https://github.com/novnc/noVNC.git#v1.4.0 /usr/share/novnc
 RUN <<EOF bash -xe
 apt-get update -qq
 apt-get install -qq -y --no-install-recommends \
-    ceph-common dmidecode genisoimage iproute2 libosinfo-bin lsscsi ndctl nfs-common nvme-cli openssh-client ovmf python3-libvirt python3-rados python3-rbd qemu-efi-aarch64 qemu-block-extra qemu-utils sysfsutils udev util-linux swtpm swtpm-tools libtpms0
+    ceph-common dmidecode genisoimage iproute2 libosinfo-bin lsscsi ndctl nfs-common nvme-cli openssh-client ovmf python3-libvirt python3-rados python3-rbd qemu-efi-aarch64 qemu-block-extra qemu-utils sysfsutils udev util-linux swtpm swtpm-tools libtpms0 apache2 libapache2-mod-wsgi-py3 cryptsetup net-tools openssh-server
 apt-get clean
 rm -rf /var/lib/apt/lists/*
 EOF
