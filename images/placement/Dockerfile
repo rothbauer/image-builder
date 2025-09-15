@@ -14,4 +14,10 @@ uv pip install \
 EOF
 
 FROM openstack-python-runtime
+RUN <<EOF bash -xe
+apt-get update -qq
+apt-get install -qq -y --no-install-recommends curl jq apache2 libapache2-mod-wsgi-py3
+apt-get clean
+rm -rf /var/lib/apt/lists/*
+EOF
 COPY --from=build --link /var/lib/openstack /var/lib/openstack
