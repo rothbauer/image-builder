@@ -185,7 +185,8 @@ target "python-openstackclient" {
     }
 
     tags = [
-        "${REGISTRY}/python-openstackclient:${TAG}"
+        "${REGISTRY}/python-openstackclient:${TAG}",
+        "${REGISTRY}/python-openstackclient:2025.1"
     ]
 }
 
