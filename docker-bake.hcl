@@ -1,9 +1,9 @@
 variable "REGISTRY" {
-    default = "core.harbor.cloud.prz/openstack-helm-test"
+    default = "core.harbor.cloud.prz/openstack-helm"
 }
 
 variable "TAG" {
-    default = "2025.1"
+    default = "master"
 }
 
 target "ubuntu" {
@@ -81,8 +81,7 @@ target "keepalived" {
     }
 
     tags = [
-        "${REGISTRY}/keepalived:${TAG}",
-        "${REGISTRY}/keepalived:latest"
+        "${REGISTRY}/keepalived:${TAG}"
     ]
 }
 
@@ -99,8 +98,7 @@ target "libvirtd" {
     }
 
     tags = [
-        "${REGISTRY}/libvirtd:${TAG}",
-        "${REGISTRY}/libvirtd:latest"
+        "${REGISTRY}/libvirtd:${TAG}"
     ]
 }
 
@@ -114,8 +112,7 @@ target "netoffload" {
     }
 
     tags = [
-        "${REGISTRY}/netoffload:${TAG}",
-        "${REGISTRY}/netoffload:latest"
+        "${REGISTRY}/netoffload:${TAG}"
     ]
 }
 
@@ -133,8 +130,7 @@ target "nova-ssh" {
     }
 
     tags = [
-        "${REGISTRY}/nova-ssh:${TAG}",
-        "${REGISTRY}/nova-ssh:latest"
+        "${REGISTRY}/nova-ssh:${TAG}"
     ]
 }
 
@@ -147,8 +143,7 @@ target "openvswitch" {
     }
 
     tags = [
-        "${REGISTRY}/openvswitch:${TAG}",
-        "${REGISTRY}/openvswitch:latest"
+        "${REGISTRY}/openvswitch:${TAG}"
     ]
 }
 
@@ -172,8 +167,7 @@ target "ovn" {
     }
 
     tags = [
-        "${REGISTRY}/ovn-${component}:${TAG}",
-        "${REGISTRY}/ovn-${component}:latest"
+        "${REGISTRY}/ovn-${component}:${TAG}"
     ]
 }
 
@@ -187,8 +181,7 @@ target "python-openstackclient" {
     }
 
     tags = [
-        "${REGISTRY}/python-openstackclient:${TAG}",
-        "${REGISTRY}/python-openstackclient:latest"
+        "${REGISTRY}/python-openstackclient:${TAG}"
     ]
 }
 
@@ -219,8 +212,7 @@ target "neutron" {
     }
 
     tags = [
-        "${REGISTRY}/neutron:${TAG}",
-        "${REGISTRY}/neutron:latest"
+        "${REGISTRY}/neutron:${TAG}"
     ]
 }
 
@@ -261,8 +253,7 @@ target "openstack" {
     }
 
     tags = [
-        "${REGISTRY}/${service}:${TAG}",
-        "${REGISTRY}/${service}:latest"
+        "${REGISTRY}/${service}:${TAG}"
     ]
 }
 
