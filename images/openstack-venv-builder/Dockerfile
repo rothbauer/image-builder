@@ -4,7 +4,7 @@
 
 FROM ubuntu-cloud-archive AS requirements
 # renovate: name=openstack/requirements repo=https://github.com/openstack/requirements.git branch=stable/2025.1
-ARG REQUIREMENTS_GIT_REF=bfd91c04caf498be2bfda0732a2a0f9fa9306e07
+ARG REQUIREMENTS_GIT_REF=ede55c0a79c57862b0fa5e1c71266b5e57689144
 ADD --keep-git-dir=true https://github.com/openstack/requirements.git#${REQUIREMENTS_GIT_REF} /src/requirements
 RUN cp /src/requirements/upper-constraints.txt /upper-constraints.txt
 RUN <<EOF sh -xe
@@ -29,10 +29,10 @@ apt-get install -qq -y --no-install-recommends \
 apt-get clean
 rm -rf /var/lib/apt/lists/*
 EOF
-COPY --from=docker.io/astral/uv:latest /uv /uvx /bin/
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 COPY --from=requirements --link /upper-constraints.txt /upper-constraints.txt
-RUN --mount=type=cache,target=/root/.cache/uv <<EOF bash -xe
-uv cache clean uwsgi
+ARG UV_CACHE_ID=uv-default
+RUN --mount=type=cache,id=${UV_CACHE_ID},target=/root/.cache/uv <<EOF bash -xe
 uv venv --system-site-packages /var/lib/openstack
 uv pip install \
     --constraint /upper-constraints.txt \
