@@ -4,7 +4,7 @@
 
 FROM openstack-venv-builder AS build
 # renovate: name=openstack/ovn-bgp-agent repo=https://github.com/openstack/ovn-bgp-agent.git branch=stable/2025.1
-ARG OVN_BGP_AGENT_GIT_REF=2237aaa74242801c3fcb00979f1bb7a8e993b172
+ARG OVN_BGP_AGENT_GIT_REF=4f02cad1f7fc3cb20a4b22b819f010393f11a8ab
 ADD --keep-git-dir=true https://github.com/openstack/ovn-bgp-agent.git#${OVN_BGP_AGENT_GIT_REF} /src/ovn-bgp-agent
 RUN git -C /src/ovn-bgp-agent fetch --unshallow
 COPY patches/ovn-bgp-agent /patches/ovn-bgp-agent
