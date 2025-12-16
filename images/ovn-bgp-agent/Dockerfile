@@ -20,7 +20,7 @@ FROM openstack-python-runtime
 RUN <<EOF bash -xe
 apt-get update -qq
 apt-get install -qq -y --no-install-recommends \
-    iproute2 openvswitch-switch frr
+    iproute2 openvswitch-switch
 apt-get clean
 rm -rf /var/lib/apt/lists/*
 EOF
