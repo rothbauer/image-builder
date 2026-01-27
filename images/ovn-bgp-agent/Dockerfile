@@ -4,7 +4,7 @@
 
 FROM openstack-venv-builder AS build
 # renovate: name=openstack/ovn-bgp-agent repo=https://github.com/openstack/ovn-bgp-agent.git branch=stable/2025.2
-ARG OVN_BGP_AGENT_GIT_REF=fe0d730b960dd9d0b6731a81bea148b36e63af8d
+ARG OVN_BGP_AGENT_GIT_REF=221a35eb448d280ae169824ff4fd4de1ebec89d5
 ADD --keep-git-dir=true https://github.com/openstack/ovn-bgp-agent.git#${OVN_BGP_AGENT_GIT_REF} /src/ovn-bgp-agent
 RUN git -C /src/ovn-bgp-agent fetch --unshallow
 COPY patches/ovn-bgp-agent /patches/ovn-bgp-agent
@@ -20,7 +20,7 @@ FROM openstack-python-runtime
 RUN <<EOF bash -xe
 apt-get update -qq
 apt-get install -qq -y --no-install-recommends \
-    iproute2 openvswitch-switch
+    iproute2 openvswitch-switch python3-oslo.privsep
 apt-get clean
 rm -rf /var/lib/apt/lists/*
 EOF
