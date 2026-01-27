@@ -13,14 +13,15 @@ ARG UV_CACHE_ID=uv-default
 RUN --mount=type=cache,id=${UV_CACHE_ID},target=/root/.cache/uv <<EOF bash -xe
 uv pip install \
     --constraint /upper-constraints.txt \
-        /src/ovn-bgp-agent[frr_k8s]
+        /src/ovn-bgp-agent[frr_k8s] \
+        oslo.privsep
 EOF
 
 FROM openstack-python-runtime
 RUN <<EOF bash -xe
 apt-get update -qq
 apt-get install -qq -y --no-install-recommends \
-    iproute2 openvswitch-switch python3-oslo.privsep
+    iproute2 openvswitch-switch
 apt-get clean
 rm -rf /var/lib/apt/lists/*
 EOF
