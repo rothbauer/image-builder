@@ -38,7 +38,8 @@ RUN git -C /src/octavia-dashboard fetch --unshallow
 COPY patches/magnum-ui /patches/magnum-ui
 RUN git -C /src/magnum-ui apply --verbose /patches/magnum-ui/*
 # workaround (xstatic needs an older version of setuptools)
-RUN echo "setuptools<82" > /upper-constraints.txt
+RUN sed -i 's/setuptools>=[^"]\+/setuptools>=64.0.0,<82/' /src/horizon/pyproject.toml
+
 RUN --mount=type=cache,target=/root/.cache/uv <<EOF bash -xe
 uv pip install \
     --constraint /upper-constraints.txt \
