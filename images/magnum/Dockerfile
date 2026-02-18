@@ -16,7 +16,7 @@ ARG MAGNUM_GIT_REF=8bf001235786592de4c48892ce6aca8b7c38e0d5
 ADD --keep-git-dir=true https://github.com/openstack/magnum.git#${MAGNUM_GIT_REF} /src/magnum
 RUN git -C /src/magnum fetch --unshallow
 RUN --mount=type=cache,target=/root/.cache/uv <<EOF bash -xe
-uv pip install setuptools
+uv pip install "setuptools<70"
 uv pip install --no-build-isolation \
     --constraint /upper-constraints.txt \
         /src/magnum \
