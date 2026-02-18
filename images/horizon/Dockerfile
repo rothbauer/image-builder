@@ -37,11 +37,14 @@ ADD --keep-git-dir=true https://github.com/openstack/octavia-dashboard.git#${OCT
 RUN git -C /src/octavia-dashboard fetch --unshallow
 COPY patches/magnum-ui /patches/magnum-ui
 RUN git -C /src/magnum-ui apply --verbose /patches/magnum-ui/*
+# use workaround (xstatic needs an older version of setuptools)
+#RUN uv pip install "setuptools<70"
+#RUN uv pip show setuptools
+#ENV UV_EXTRA_BUILD_DEPENDENCIES='{"xstatic-angular-schema-form": ["setuptools<82"]}'
 RUN --mount=type=cache,target=/root/.cache/uv <<EOF bash -xe
-# workaround (xstatic needs an older version of setuptools)
-echo 'setuptools>=64.0.0,<70' >> /src/horizon/requirements.txt
 uv pip install \
     --constraint /upper-constraints.txt \
+    --extra-build-dependency "xstatic-angular-schema-form=setuptools<82" \
         /src/designate-dashboard \
         /src/heat-dashboard \
         /src/horizon \
