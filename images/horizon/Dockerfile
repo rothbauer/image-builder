@@ -38,6 +38,7 @@ RUN git -C /src/octavia-dashboard fetch --unshallow
 COPY patches/magnum-ui /patches/magnum-ui
 RUN git -C /src/magnum-ui apply --verbose /patches/magnum-ui/*
 RUN --mount=type=cache,target=/root/.cache/uv <<EOF bash -xe
+echo "setuptools<82" > /upper-constraints.txt
 uv pip install \
     --constraint /upper-constraints.txt \
         /src/designate-dashboard \
