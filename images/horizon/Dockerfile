@@ -37,10 +37,9 @@ ADD --keep-git-dir=true https://github.com/openstack/octavia-dashboard.git#${OCT
 RUN git -C /src/octavia-dashboard fetch --unshallow
 COPY patches/magnum-ui /patches/magnum-ui
 RUN git -C /src/magnum-ui apply --verbose /patches/magnum-ui/*
-# workaround (xstatic needs an older version of setuptools)
-RUN sed -i 's/setuptools>=[^"]\+/setuptools>=64.0.0,<82/' /src/horizon/pyproject.toml
-
 RUN --mount=type=cache,target=/root/.cache/uv <<EOF bash -xe
+# workaround (xstatic needs an older version of setuptools)
+sed -i 's/setuptools>=[^"]\+/setuptools>=64.0.0,<82/' /src/horizon/pyproject.toml
 uv pip install \
     --constraint /upper-constraints.txt \
         /src/designate-dashboard \
