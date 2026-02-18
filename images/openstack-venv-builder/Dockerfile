@@ -33,12 +33,6 @@ rm -rf /var/lib/apt/lists/*
 EOF
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 COPY --from=requirements --link /upper-constraints.txt /upper-constraints.txt
-# Create a uv extra-build-dependencies file for XStatic
-RUN mkdir -p /etc/uv
-RUN printf '[tool.uv.extra-build-dependencies]\nxstatic-angular-schema-form = ["setuptools"]\n' \
-    > /etc/uv/uv-extra-build-deps.toml
-ENV UV_EXTRA_BUILD_DEPS=/etc/uv/uv-extra-build-deps.toml
-
 ARG UV_CACHE_ID=uv-default
 RUN --mount=type=cache,id=${UV_CACHE_ID},target=/root/.cache/uv <<EOF bash -xe
 uv venv --system-site-packages /var/lib/openstack
@@ -49,5 +43,6 @@ uv pip install \
         pymysql \
         python-binary-memcached \
         python-memcached \
-        uwsgi
+        uwsgi \
+        setuptools
 EOF
