@@ -31,7 +31,7 @@ apt-get install -qq -y --no-install-recommends \
 apt-get clean
 rm -rf /var/lib/apt/lists/*
 EOF
-COPY --from=ghcr.io/astral-sh/uv:latest@sha256:4cac394b6b72846f8a85a7a0e577c6d61d4e17fe2ccee65d9451a8b3c9efb4ac /uv /uvx /bin/
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 COPY --from=requirements --link /upper-constraints.txt /upper-constraints.txt
 ARG UV_CACHE_ID=uv-default
 RUN --mount=type=cache,id=${UV_CACHE_ID},target=/root/.cache/uv <<EOF bash -xe
@@ -43,5 +43,6 @@ uv pip install \
         pymysql \
         python-binary-memcached \
         python-memcached \
-        uwsgi
+        uwsgi \
+        setuptools
 EOF
