@@ -43,5 +43,6 @@ uv pip install \
         pymysql \
         python-binary-memcached \
         python-memcached \
-        uwsgi
+        uwsgi \
+        pkg_resources
 EOF
