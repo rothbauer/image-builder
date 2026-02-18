@@ -4,12 +4,14 @@
 
 FROM ubuntu-cloud-archive AS requirements
 # renovate: name=openstack/requirements repo=https://github.com/openstack/requirements.git branch=stable/2025.1
-ARG REQUIREMENTS_GIT_REF=ede55c0a79c57862b0fa5e1c71266b5e57689144
+ARG REQUIREMENTS_GIT_REF=7b62011174e030d696d7ca42eb11ad82f2b19a3d
 ADD --keep-git-dir=true https://github.com/openstack/requirements.git#${REQUIREMENTS_GIT_REF} /src/requirements
 RUN cp /src/requirements/upper-constraints.txt /upper-constraints.txt
 RUN <<EOF sh -xe
 sed -i '/glance_store/d' /upper-constraints.txt
 sed -i '/horizon/d' /upper-constraints.txt
+sed -i '/networking-generic-switch/d' /upper-constraints.txt
+sed -i '/tap-as-a-service/d' /upper-constraints.txt
 EOF
 
 FROM python-base
