@@ -44,5 +44,5 @@ uv pip install \
         python-binary-memcached \
         python-memcached \
         uwsgi \
-        pkg_resources
+        setuptools
 EOF
