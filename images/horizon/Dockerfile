@@ -48,7 +48,8 @@ uv pip install \
         /src/manila-ui \
         /src/neutron-vpnaas-dashboard \
         /src/octavia-dashboard \
-        pymemcache
+        pymemcache \
+        pkg_resources
 EOF
 
 FROM openstack-python-runtime
