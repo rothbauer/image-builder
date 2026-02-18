@@ -39,7 +39,7 @@ COPY patches/magnum-ui /patches/magnum-ui
 RUN git -C /src/magnum-ui apply --verbose /patches/magnum-ui/*
 RUN --mount=type=cache,target=/root/.cache/uv <<EOF bash -xe
 # workaround (xstatic needs an older version of setuptools)
-sed -i 's/setuptools>=[^"]\+/setuptools>=64.0.0,<82/' /src/horizon/pyproject.toml
+echo 'setuptools>=64.0.0,<82' >> /src/horizon/requirements.txt
 uv pip install \
     --constraint /upper-constraints.txt \
         /src/designate-dashboard \
