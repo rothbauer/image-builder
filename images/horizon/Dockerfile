@@ -38,13 +38,14 @@ RUN git -C /src/octavia-dashboard fetch --unshallow
 COPY patches/magnum-ui /patches/magnum-ui
 RUN git -C /src/magnum-ui apply --verbose /patches/magnum-ui/*
 # use workaround (xstatic needs an older version of setuptools)
-#RUN uv pip install "setuptools<70"
-#RUN uv pip show setuptools
-#ENV UV_EXTRA_BUILD_DEPENDENCIES='{"xstatic-angular-schema-form": ["setuptools<82"]}'
+ENV uv cache clean
 RUN --mount=type=cache,target=/root/.cache/uv <<EOF bash -xe
+echo "setuptools<82" >> /upper-constraints.txt
+uv pip install "setuptools<82"
+find /root/.cache/uv -name "setup.py" -exec sed -i "/namespace_packages\s*=\s*\[.*\]/d" {} +
+find /root/.cache/uv -name "__init__.py" -exec sed -i "/__import__(['\"]pkg_resources['\"]).declare_namespace(__name__)/d" {} +
 uv pip install \
     --constraint /upper-constraints.txt \
-    --extra-build-dependency "xstatic-angular-schema-form=setuptools<82" \
         /src/designate-dashboard \
         /src/heat-dashboard \
         /src/horizon \
