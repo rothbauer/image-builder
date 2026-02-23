@@ -37,10 +37,7 @@ ADD --keep-git-dir=true https://github.com/openstack/octavia-dashboard.git#${OCT
 RUN git -C /src/octavia-dashboard fetch --unshallow
 COPY patches/magnum-ui /patches/magnum-ui
 RUN git -C /src/magnum-ui apply --verbose /patches/magnum-ui/*
-# workaround: we download upper constraints for version 2025.2
-ADD https://opendev.org/openstack/requirements/raw/branch/stable/2025.2/upper-constraints.txt /upper-constraints.txt
 RUN --mount=type=cache,target=/root/.cache/uv <<EOF bash -xe
-sed -i '/^horizon==/d' /upper-constraints.txt
 uv pip install \
     --constraint /upper-constraints.txt \
         /src/designate-dashboard \
