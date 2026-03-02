@@ -18,6 +18,7 @@ RUN git -C /src/magnum fetch --unshallow
 RUN --mount=type=cache,target=/root/.cache/uv <<EOF bash -xe
 uv pip install \
     --constraint /upper-constraints.txt \
+        oslo.cache \
         /src/magnum \
         magnum-cluster-api==0.35.0
 EOF
