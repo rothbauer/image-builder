@@ -19,7 +19,6 @@ RUN --mount=type=cache,target=/root/.cache/uv <<EOF bash -xe
 uv pip install \
     --constraint /upper-constraints.txt \
         /src/magnum \
-        setuptools>=69 \
         magnum-cluster-api==0.35.0
 EOF
 
